@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'devise-i18n'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1', '>= 4.1.1'
 

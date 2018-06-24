@@ -24,7 +24,8 @@
         </div>
       </li>
     </ul>
-    <button class="btn btn-outline-light my-2 my-sm-0 mr-3" type="submit">Entrar</button>
-    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Cadastrar</button>
+    <%= link_to 'Entrar', new_session_path(resource_name),
+                class: 'btn btn-outline-light my-2 my-sm-0 mr-3' %>
+    <%= link_to 'Cadastrar', new_registration_path(resource_name), class: 'btn btn-outline-light my-2 my-sm-0' %>
   </div>
 </nav>
