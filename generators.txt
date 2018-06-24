@@ -1,0 +1,9 @@
+rails d  model User email:string password:string
+
+rails g model Empresa nome:string cnpj:string endereco:string validada:boolean
+
+rails g model Pessoa nome:string cpf:string
+
+rails g model Coordenador curso:string
+
+rails g model Aluno matricula:string periodo:number validado:boolean
