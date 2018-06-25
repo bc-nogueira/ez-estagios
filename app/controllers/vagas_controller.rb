@@ -2,7 +2,7 @@ class VagasController < ApplicationController
   before_action :set_vaga, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vagas = Vaga.all
+    @vagas = Vaga.por_empresa(current_account.perfil_id)
   end
 
   def show; end
