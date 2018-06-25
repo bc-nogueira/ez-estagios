@@ -10,9 +10,12 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    if params[:account][:empresa]
+      @account.update_attributes(perfil: Empresa.new(empresa_params))
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -44,6 +47,10 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   # def configure_sign_up_params
     # devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
+
+  def empresa_params
+    params.require(:account).require(:empresa).permit([:nome, :cnpj, :endereco])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
