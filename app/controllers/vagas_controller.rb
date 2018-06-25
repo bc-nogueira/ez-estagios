@@ -15,6 +15,7 @@ class VagasController < ApplicationController
   # GET /vagas/new
   def new
     @vaga = Vaga.new
+    @empresas = Empresa.all
   end
 
   # GET /vagas/1/edit
@@ -69,6 +70,6 @@ class VagasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vaga_params
-      params.require(:vaga).permit(:empresa_id, :descricao, :data_fim, :data_resposta, :validada)
+      params.require(:vaga).permit(:empresa_id, :titulo, :descricao, :data_fim, :data_resposta, :validada)
     end
 end

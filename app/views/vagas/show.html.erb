@@ -2,7 +2,7 @@
 
 <p>
   <strong>Empresa:</strong>
-  <%= @vaga.empresa %>
+  <%= @vaga.empresa.nome %>
 </p>
 
 <p>
@@ -20,10 +20,5 @@
   <%= @vaga.data_resposta %>
 </p>
 
-<p>
-  <strong>Validada:</strong>
-  <%= @vaga.validada %>
-</p>
-
-<%= link_to 'Edit', edit_vaga_path(@vaga) %> |
-<%= link_to 'Back', vagas_path %>
+<%= link_to 'Editar', edit_vaga_path(@vaga) %> |
+<%= link_to 'Voltar', vagas_path %>

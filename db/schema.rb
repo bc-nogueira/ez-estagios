@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_032545) do
+ActiveRecord::Schema.define(version: 2018_06_25_144939) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -73,17 +73,17 @@ ActiveRecord::Schema.define(version: 2018_06_25_032545) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "coordenadores", force: :cascade do |t|
+  create_table "coordenadors", force: :cascade do |t|
     t.string "curso"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "empresas", force: :cascade do |t|
-    t.string "nome", null: false
-    t.string "cnpj", null: false
-    t.string "endereco", null: false
-    t.boolean "validada", default: false, null: false
+    t.string "nome"
+    t.string "cnpj"
+    t.string "endereco"
+    t.boolean "validada"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_032545) do
     t.boolean "validada"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "titulo"
     t.index ["empresa_id"], name: "index_vagas_on_empresa_id"
   end
 
