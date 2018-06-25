@@ -7,6 +7,6 @@ class Account < ApplicationRecord
   belongs_to :perfil, polymorphic: true, optional: true
 
   after_destroy do |account|
-    account.perfil.destroy
+    account.perfil.destroy if account.perfil
   end
 end
