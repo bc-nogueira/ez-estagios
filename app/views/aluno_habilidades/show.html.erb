@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Aluno:</strong>
+  <%= @aluno_habilidade.aluno %>
+</p>
+
+<p>
+  <strong>Habilidade:</strong>
+  <%= @aluno_habilidade.habilidade %>
+</p>
+
+<p>
+  <strong>Nivel:</strong>
+  <%= @aluno_habilidade.nivel %>
+</p>
+
+<%= link_to 'Edit', edit_aluno_habilidade_path(@aluno_habilidade) %> |
+<%= link_to 'Back', aluno_habilidades_path %>

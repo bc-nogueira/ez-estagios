@@ -1,0 +1,37 @@
+<%= form_with(model: aluno_vaga, local: true) do |form| %>
+  <% if aluno_vaga.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(aluno_vaga.errors.count, "error") %> prohibited this aluno_vaga from being saved:</h2>
+
+      <ul>
+      <% aluno_vaga.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :vaga_id %>
+    <%= form.text_field :vaga_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aluno_id %>
+    <%= form.text_field :aluno_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :validado_coordenador %>
+    <%= form.check_box :validado_coordenador %>
+  </div>
+
+  <div class="field">
+    <%= form.label :validado_empresa %>
+    <%= form.check_box :validado_empresa %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

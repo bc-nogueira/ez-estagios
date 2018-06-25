@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vaga Habilidades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vaga</th>
+      <th>Habilidade</th>
+      <th>Nivel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vaga_habilidades.each do |vaga_habilidade| %>
+      <tr>
+        <td><%= vaga_habilidade.vaga %></td>
+        <td><%= vaga_habilidade.habilidade %></td>
+        <td><%= vaga_habilidade.nivel %></td>
+        <td><%= link_to 'Show', vaga_habilidade %></td>
+        <td><%= link_to 'Edit', edit_vaga_habilidade_path(vaga_habilidade) %></td>
+        <td><%= link_to 'Destroy', vaga_habilidade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vaga Habilidade', new_vaga_habilidade_path %>

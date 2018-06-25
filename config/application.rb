@@ -25,6 +25,7 @@ module EzEstagio
       g.assets  false
       g.helper false
       g.stylesheets false
+      g.jbuilder false
     end
   end
 end

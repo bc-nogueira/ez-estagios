@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vagas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Empresa</th>
+      <th>Descricao</th>
+      <th>Data fim</th>
+      <th>Data resposta</th>
+      <th>Validada</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vagas.each do |vaga| %>
+      <tr>
+        <td><%= vaga.empresa %></td>
+        <td><%= vaga.descricao %></td>
+        <td><%= vaga.data_fim %></td>
+        <td><%= vaga.data_resposta %></td>
+        <td><%= vaga.validada %></td>
+        <td><%= link_to 'Show', vaga %></td>
+        <td><%= link_to 'Edit', edit_vaga_path(vaga) %></td>
+        <td><%= link_to 'Destroy', vaga, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vaga', new_vaga_path %>

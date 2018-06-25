@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Aluno Horarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aluno</th>
+      <th>Dia semana</th>
+      <th>Hora inicio</th>
+      <th>Hora fim</th>
+      <th>Minuto inicio</th>
+      <th>Minuto fim</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aluno_horarios.each do |aluno_horario| %>
+      <tr>
+        <td><%= aluno_horario.aluno %></td>
+        <td><%= aluno_horario.dia_semana %></td>
+        <td><%= aluno_horario.hora_inicio %></td>
+        <td><%= aluno_horario.hora_fim %></td>
+        <td><%= aluno_horario.minuto_inicio %></td>
+        <td><%= aluno_horario.minuto_fim %></td>
+        <td><%= link_to 'Show', aluno_horario %></td>
+        <td><%= link_to 'Edit', edit_aluno_horario_path(aluno_horario) %></td>
+        <td><%= link_to 'Destroy', aluno_horario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Aluno Horario', new_aluno_horario_path %>
