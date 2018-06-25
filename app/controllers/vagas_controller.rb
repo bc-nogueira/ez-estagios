@@ -1,35 +1,25 @@
 class VagasController < ApplicationController
   before_action :set_vaga, only: [:show, :edit, :update, :destroy]
 
-  # GET /vagas
-  # GET /vagas.json
   def index
     @vagas = Vaga.all
   end
 
-  # GET /vagas/1
-  # GET /vagas/1.json
-  def show
-  end
+  def show; end
 
-  # GET /vagas/new
   def new
     @vaga = Vaga.new
-    @empresas = Empresa.all
   end
 
-  # GET /vagas/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /vagas
-  # POST /vagas.json
   def create
+    binding.pry
     @vaga = Vaga.new(vaga_params)
 
     respond_to do |format|
       if @vaga.save
-        format.html { redirect_to @vaga, notice: 'Vaga was successfully created.' }
+        format.html { redirect_to @vaga, notice: 'Vaga foi criada com sucesso.' }
         format.json { render :show, status: :created, location: @vaga }
       else
         format.html { render :new }
@@ -38,12 +28,10 @@ class VagasController < ApplicationController
     end
   end
 
-  # PATCH/PUT /vagas/1
-  # PATCH/PUT /vagas/1.json
   def update
     respond_to do |format|
       if @vaga.update(vaga_params)
-        format.html { redirect_to @vaga, notice: 'Vaga was successfully updated.' }
+        format.html { redirect_to @vaga, notice: 'Vaga foi atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @vaga }
       else
         format.html { render :edit }
@@ -52,24 +40,21 @@ class VagasController < ApplicationController
     end
   end
 
-  # DELETE /vagas/1
-  # DELETE /vagas/1.json
   def destroy
     @vaga.destroy
     respond_to do |format|
-      format.html { redirect_to vagas_url, notice: 'Vaga was successfully destroyed.' }
+      format.html { redirect_to vagas_url, notice: 'Vaga foi excluída com sucesso.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_vaga
       @vaga = Vaga.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def vaga_params
-      params.require(:vaga).permit(:empresa_id, :titulo, :descricao, :data_fim, :data_resposta, :validada)
+      params.require(:vaga).permit(:titulo, :descricao, :data_fim, :data_resposta)
+          .merge(empresa_id: current_account.perfil.id)
     end
 end

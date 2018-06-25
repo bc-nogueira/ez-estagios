@@ -1,4 +1,4 @@
-<%= form_with(model: vaga, local: true) do |form| %>
+<%= form_with(model: vaga, local: true) do |f| %>
   <% if vaga.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vaga.errors.count, "error") %> prohibited this vaga from being saved:</h2>
@@ -11,37 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :empresa_id %>
-    <%= form.select :empresa_id, options_from_collection_for_select(@empresas, "id", "nome") %>
+  <div class="form-group">
+    <%= f.label :titulo %>
+    <%= f.text_field :titulo, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :titulo %>
-    <%= form.text_field :titulo %>
+  <div class="form-group">
+    <%= f.label :descricao %>
+    <%= f.text_area :descricao, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :descricao %>
-    <%= form.text_area :descricao %>
+  <div class="row">
+    <div class="form-group col-6">
+      <%= f.label :data_fim %>
+      <%= f.text_field :data_fim, class: 'form-control', 'data-provide': 'datepicker' %>
+    </div>
+
+    <div class="form-group col-6">
+      <%= f.label :data_resposta %>
+      <%= f.text_field :data_resposta, class: 'form-control', 'data-provide': 'datepicker' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :data_fim %>
-    <%= form.datetime_select :data_fim %>
-  </div>
-
-  <div class="field">
-    <%= form.label :data_resposta %>
-    <%= form.datetime_select :data_resposta %>
-  </div>
-
-  <div class="field">
-    <%= form.label :validada %>
-    <%= form.check_box :validada %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.submit 'Cadastrar', class: 'btn btn-success' %>
 <% end %>

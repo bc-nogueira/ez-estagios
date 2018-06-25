@@ -1,5 +1,5 @@
 <li class="nav-item active">
-  <a href=<%= vagas_path %> class='nav-link'>
-    <%= fa_icon('briefcase', text: 'Vagas') %>
-  </a>
+  <%= link_to vagas_path, class: 'nav-link' do %>
+    <%= fa_icon('briefcase') %> Vagas
+  <% end %>
 </li>

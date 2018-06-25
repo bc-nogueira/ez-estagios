@@ -30,7 +30,7 @@ gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.1', '>= 4.1.1'
-gem 'font-awesome-rails'
+gem 'bootstrap-datepicker-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

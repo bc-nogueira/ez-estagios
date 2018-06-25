@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @vaga.titulo %></h1>
+
 <p>
   <strong>Empresa:</strong>
   <%= @vaga.empresa.nome %>
@@ -20,5 +22,7 @@
   <%= @vaga.data_resposta %>
 </p>
 
-<%= link_to 'Editar', edit_vaga_path(@vaga) %> |
-<%= link_to 'Voltar', vagas_path %>
+<div class="row">
+  <%= link_to 'Editar', edit_vaga_path(@vaga), class: 'btn btn-primary col-1' %>
+  <%= link_to 'Voltar', vagas_path, class: 'btn btn-secondary col-1 offset-1' %>
+</div>
