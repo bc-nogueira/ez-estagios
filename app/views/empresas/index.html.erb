@@ -1,10 +1,22 @@
-<h2>Em Espera</h2>
-<%= render 'empresas/table_espera' %>
+<h2 id="espera-title">
+  Em Espera <%= fa_icon 'angle-down', id: 'espera-icon' %>
+</h2>
+<div id="espera-div" style="display: none">
+  <%= render 'empresas/table_espera' %>
+</div>
 <hr>
 
-<h2 class="text-success">Aprovadas</h2>
-<%= render 'empresas/table_aprovadas' %>
+<h2 id="aprovadas-title" class="text-success">
+  Aprovadas <%= fa_icon 'angle-down', id: 'aprovadas-icon' %>
+</h2>
+<div id="aprovadas-div" style="display: none">
+  <%= render 'empresas/table_aprovadas' %>
+</div>
 <hr>
 
-<h2 class="text-danger">Reprovadas</h2>
-<%= render 'empresas/table_reprovadas' %>
+<h2 id="reprovadas-title" class="text-danger">
+  Reprovadas  <%= fa_icon 'angle-down', id: 'reprovadas-icon' %>
+</h2>
+<div id="reprovadas-div" style="display: none">
+  <%= render 'empresas/table_reprovadas' %>
+</div>
