@@ -2,7 +2,8 @@
   Em Espera <%= fa_icon 'angle-down', id: 'espera-icon' %>
 </h2>
 <div id="espera-div" style="display: none">
-  <%= render 'empresas/table_espera' %>
+  <%= render partial: 'empresas/table_espera',
+             locals: { empresas: @empresas.select { |empresa| empresa.validada == nil } } %>
 </div>
 <hr>
 
@@ -10,7 +11,8 @@
   Aprovadas <%= fa_icon 'angle-down', id: 'aprovadas-icon' %>
 </h2>
 <div id="aprovadas-div" style="display: none">
-  <%= render 'empresas/table_aprovadas' %>
+  <%= render partial: 'empresas/table_aprovadas',
+             locals: { empresas: @empresas.select { |empresa| empresa.validada == true } } %>
 </div>
 <hr>
 
@@ -18,5 +20,6 @@
   Reprovadas  <%= fa_icon 'angle-down', id: 'reprovadas-icon' %>
 </h2>
 <div id="reprovadas-div" style="display: none">
-  <%= render 'empresas/table_reprovadas' %>
+  <%= render partial: 'empresas/table_reprovadas',
+             locals: { empresas: @empresas.select { |empresa| empresa.validada == false } } %>
 </div>
