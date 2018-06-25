@@ -24,7 +24,11 @@
         </div>
       </li>
     </ul>
-    <%= link_to 'Entrar', new_account_session_path, class: 'btn btn-outline-light my-2 my-sm-0 mr-3' %>
-    <%= link_to 'Cadastrar', new_account_registration_path, class: 'btn btn-outline-light my-2 my-sm-0' %>
+    <% if account_signed_in? %>
+      <%= link_to 'Sair', destroy_account_session_path, method: :delete, class: 'btn btn-outline-light my-2 my-sm-0' %>
+    <% else %>
+      <%= link_to 'Entrar', new_account_session_path, class: 'btn btn-outline-light my-2 my-sm-0 mr-3' %>
+      <%= link_to 'Cadastrar', new_account_registration_path, class: 'btn btn-outline-light my-2 my-sm-0' %>
+    <% end %>
   </div>
 </nav>
