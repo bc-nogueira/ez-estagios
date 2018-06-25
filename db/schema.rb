@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_06_24_064524) do
     t.string "nome", null: false
     t.string "cnpj", null: false
     t.string "endereco", null: false
-    t.boolean "validada", default: false, null: false
+    t.boolean "validada"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
