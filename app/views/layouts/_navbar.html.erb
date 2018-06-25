@@ -7,9 +7,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a href=<%= root_path %> class='nav-link'>
-          <%= fa_icon('home', text: 'Home') %>
-        </a>
+        <%= link_to root_path, class: 'nav-link' do %>
+          <%= fa_icon('home') %> Home
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to instrucao_index_path, class: 'nav-link' do %>
+          <%= fa_icon('info') %> Instruções
+        <% end %>
       </li>
       <% if account_signed_in? %>
         <% if current_account.is_empresa? %>
