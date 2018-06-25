@@ -13,4 +13,7 @@ class Account < ApplicationRecord
   def is_empresa?
     perfil_type == 'Empresa'
   end
+  def is_coordenador?
+    perfil.papel_type == 'Coordenador'
+  end
 end

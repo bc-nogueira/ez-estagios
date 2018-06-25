@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+  <tr class="d-flex">
+    <th scope="col" class="col-4">Nome</th>
+    <th scope="col" class="col-2">CNPJ</th>
+    <th scope="col" class="col-4">Endereço</th>
+    <th scope="col" class="col-2">E-mail</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @empresas.select { |empresa| empresa.validada == true }.each do |empresa| %>
+    <tr class="d-flex">
+      <td class="col-4"><%= empresa.nome %></td>
+      <td class="col-2"><%= empresa.cnpj %></td>
+      <td class="col-4"><%= empresa.endereco %></td>
+      <td class="col-2"><%= empresa.account.email %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

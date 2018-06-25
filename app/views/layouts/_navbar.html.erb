@@ -9,8 +9,13 @@
       <li class="nav-item active">
         <%= link_to 'Home', root_path, class: 'nav-link' %>
       </li>
-      <% if account_signed_in? && current_account.is_empresa? %>
-        <%= render 'layouts/links_empresa' %>
+      <% if account_signed_in? %>
+        <% if current_account.is_empresa? %>
+          <%= render 'layouts/links_empresa' %>
+        <% end %>
+        <% if current_account.is_coordenador? %>
+          <%= render 'layouts/links_coordenador' %>
+        <% end %>
       <% end %>
     </ul>
     <% if account_signed_in? %>
