@@ -1,7 +1,18 @@
 <h1><%= @empresa.nome %></h1>
 
-<p><%= @empresa.account.email %></p>
-<p><%= @empresa.cnpj %></p>
-<p><%= @empresa.endereco %></p>
+<p class="row">
+  <strong class="col-2">E-mail:</strong>
+  <%= @empresa.account.email %>
+</p>
+
+<p class="row">
+  <strong class="col-2">CNPJ:</strong>
+  <%= @empresa.cnpj %>
+</p>
+
+<p class="row">
+  <strong class="col-2">Endereço:</strong>
+  <%= @empresa.endereco %>
+</p>
 
 <%= link_to 'Voltar', empresas_path, class: 'btn btn-secondary' %>

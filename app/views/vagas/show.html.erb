@@ -2,24 +2,24 @@
 
 <h1><%= @vaga.titulo %></h1>
 
-<p>
-  <strong>Empresa:</strong>
+<p class="row">
+  <strong class="col-2">Empresa:</strong>
   <%= @vaga.empresa.nome %>
 </p>
 
-<p>
-  <strong>Descricao:</strong>
+<p class="row">
+  <strong class="col-2">Descricao:</strong>
   <%= @vaga.descricao %>
 </p>
 
-<p>
-  <strong>Data fim:</strong>
-  <%= @vaga.data_fim %>
+<p class="row">
+  <strong class="col-2">Data fim:</strong>
+  <%= @vaga.data_fim.to_date %>
 </p>
 
-<p>
-  <strong>Data resposta:</strong>
-  <%= @vaga.data_resposta %>
+<p class="row">
+  <strong class="col-2">Data resposta:</strong>
+  <%= @vaga.data_resposta.to_date %>
 </p>
 
 <div class="row">
