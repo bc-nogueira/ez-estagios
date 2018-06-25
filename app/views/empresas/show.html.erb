@@ -1,0 +1,7 @@
+<h1><%= @empresa.nome %></h1>
+
+<p><%= @empresa.account.email %></p>
+<p><%= @empresa.cnpj %></p>
+<p><%= @empresa.endereco %></p>
+
+<%= link_to 'Voltar', empresas_path, class: 'btn btn-secondary' %>
