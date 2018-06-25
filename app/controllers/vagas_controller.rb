@@ -14,7 +14,6 @@ class VagasController < ApplicationController
   def edit; end
 
   def create
-    binding.pry
     @vaga = Vaga.new(vaga_params)
 
     respond_to do |format|
