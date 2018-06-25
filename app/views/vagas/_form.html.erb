@@ -1,0 +1,47 @@
+<%= form_with(model: vaga, local: true) do |form| %>
+  <% if vaga.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vaga.errors.count, "error") %> prohibited this vaga from being saved:</h2>
+
+      <ul>
+      <% vaga.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :empresa_id %>
+    <%= form.select :empresa_id, options_from_collection_for_select(@empresas, "id", "nome") %>
+  </div>
+
+  <div class="field">
+    <%= form.label :titulo %>
+    <%= form.text_field :titulo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_area :descricao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_fim %>
+    <%= form.datetime_select :data_fim %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_resposta %>
+    <%= form.datetime_select :data_resposta %>
+  </div>
+
+  <div class="field">
+    <%= form.label :validada %>
+    <%= form.check_box :validada %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

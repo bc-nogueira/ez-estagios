@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Aluno Habilidades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aluno</th>
+      <th>Habilidade</th>
+      <th>Nivel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aluno_habilidades.each do |aluno_habilidade| %>
+      <tr>
+        <td><%= aluno_habilidade.aluno %></td>
+        <td><%= aluno_habilidade.habilidade %></td>
+        <td><%= aluno_habilidade.nivel %></td>
+        <td><%= link_to 'Show', aluno_habilidade %></td>
+        <td><%= link_to 'Edit', edit_aluno_habilidade_path(aluno_habilidade) %></td>
+        <td><%= link_to 'Destroy', aluno_habilidade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Aluno Habilidade', new_aluno_habilidade_path %>
