@@ -40,17 +40,17 @@ ActiveRecord::Schema.define(version: 2018_06_24_064524) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "coordenadors", force: :cascade do |t|
+  create_table "coordenadores", force: :cascade do |t|
     t.string "curso"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "empresas", force: :cascade do |t|
-    t.string "nome"
-    t.string "cnpj"
-    t.string "endereco"
-    t.boolean "validada"
+    t.string "nome", null: false
+    t.string "cnpj", null: false
+    t.string "endereco", null: false
+    t.boolean "validada", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
