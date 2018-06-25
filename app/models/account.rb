@@ -14,6 +14,6 @@ class Account < ApplicationRecord
     perfil_type == 'Empresa'
   end
   def is_coordenador?
-    perfil.papel_type == 'Coordenador'
+    perfil.papel_type == 'Coordenador' if perfil_type == 'Pessoa'
   end
 end

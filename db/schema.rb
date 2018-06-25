@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2018_06_25_144939) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "coordenadors", force: :cascade do |t|
+  create_table "coordenadores", force: :cascade do |t|
     t.string "curso"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
