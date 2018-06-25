@@ -9,22 +9,15 @@
       <li class="nav-item active">
         <%= link_to 'Home', root_path, class: 'nav-link' %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Vagas</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+      <% if account_signed_in? && current_account.is_empresa? %>
+        <%= render 'layouts/links_empresa' %>
+      <% end %>
     </ul>
     <% if account_signed_in? %>
+      <span class="navbar-text text-white mr-3">
+        Olá <b><%= current_account.perfil.nome %></b>!
+      </span>
+
       <%= link_to 'Sair', destroy_account_session_path, method: :delete, class: 'btn btn-outline-light my-2 my-sm-0' %>
     <% else %>
       <%= link_to 'Entrar', new_account_session_path, class: 'btn btn-outline-light my-2 my-sm-0 mr-3' %>

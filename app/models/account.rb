@@ -9,4 +9,8 @@ class Account < ApplicationRecord
   after_destroy do |account|
     account.perfil.destroy if account.perfil
   end
+
+  def is_empresa?
+    perfil_type == 'Empresa'
+  end
 end
