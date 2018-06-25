@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   # Páginas que precisam de login para serem acessadas
   authenticate :account do
-    resources :empresas, only: :index
+    resources :empresas, only: :index do
+      patch 'update_validacao', on: :member
+    end
     resources :instrucao, only: :index
   end
 
