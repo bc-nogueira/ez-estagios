@@ -13,6 +13,17 @@
     <%= render 'layouts/navbar' %>
     <div class="container py-5 px-5 rounded bg-light text-secondary">
       <%= render 'layouts/devise_alerts' %>
+
+      <% if account_signed_in? && current_account.is_empresa? &&
+            !current_account.perfil.validada %>
+        <div class="alert alert-danger">
+          <span>
+            Empresa não validada!</br>
+            Por isso não é possível gerenciar vagas.
+          </span>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
 
