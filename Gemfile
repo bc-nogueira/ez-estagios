@@ -9,7 +9,9 @@ gem 'rails', '~> 5.2.0'
 gem 'therubyracer'
 
 gem 'bootstrap', '~> 4.1', '>= 4.1.1'
-gem 'bootstrap-datepicker-rails'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap-datepicker'
+end
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
