@@ -15,6 +15,11 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
     if params[:account][:empresa]
       @account.update_attributes(perfil: Empresa.new(empresa_params))
     end
+    if params[:account][:pessoa]
+      aluno = AlunoService.new(params[:account]).create_aluno
+      @account.update_attributes(perfil: aluno)
+      #@account.update_attributes(perfil: Empresa.new(empresa_params))
+    end
   end
 
   # GET /resource/edit
