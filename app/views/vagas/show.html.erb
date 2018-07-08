@@ -23,6 +23,17 @@
 </p>
 
 <div class="row">
-  <%= link_to 'Editar', edit_vaga_path(@vaga), class: 'btn btn-primary col-1' %>
-  <%= link_to 'Voltar', vagas_path, class: 'btn btn-secondary col-1 offset-1' %>
+  <% if current_account.is_empresa? %>
+    <%= link_to 'Editar', edit_vaga_path(@vaga), class: 'btn btn-primary col-1' %>
+    <%= link_to 'Voltar', vagas_path, class: 'btn btn-secondary col-1 offset-1' %>
+  <% end %>
+
+  <div class="col-md-3">
+    <% if current_account.is_aluno? %>
+        <%= form_for AlunoVaga.new do |f| %>
+            <%= f.hidden_field :vaga_id, value: @vaga.id %>
+          <%= f.submit 'Inscrever-se', class: 'btn btn-primary' %>
+        <% end %>
+    <% end %>
+  </div>
 </div>

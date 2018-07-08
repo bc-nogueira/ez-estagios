@@ -1,0 +1,32 @@
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Empresa</th>
+    <th>Descrição</th>
+    <% if !current_account.is_aluno? %>
+        <th>Aluno</th>
+    <% end %>
+    <th>Situação <i class="fa fa-question-circle" aria-hidden="true"
+                  <%= bootstrap_tooltip :info_descricao_candidaturas %>></i></th>
+    <th class="text-right">Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% aluno_vagas.each do |aluno_vaga| %>
+      <tr>
+        <td><%= aluno_vaga.vaga.empresa.nome %></td>
+        <td><%= aluno_vaga.vaga.descricao %></td>
+        <% if !current_account.is_aluno? %>
+            <td><%= aluno_vaga.aluno.matricula %></td>
+        <% end %>
+        <td><%= texto_situacao_aluno_vaga(aluno_vaga) %></td>
+
+        <% if current_account.is_aluno? %>
+            <td><%= link_to 'Cancelar Inscrição', aluno_vaga, method: :delete,
+                            class: 'btn btn-danger pull-right',
+                            data: { confirm: 'Você tem certeza?' } %></td>
+        <% end %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

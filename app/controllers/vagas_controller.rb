@@ -2,7 +2,13 @@ class VagasController < ApplicationController
   before_action :set_vaga, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vagas = Vaga.por_empresa(current_account.perfil_id)
+    if current_account.is_empresa?
+      @vagas = Vaga.por_empresa(current_account.perfil_id)
+    end
+
+    if current_account.is_aluno?
+      @vagas = Vaga.validadas
+    end
   end
 
   def show; end

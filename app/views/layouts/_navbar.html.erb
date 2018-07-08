@@ -23,6 +23,9 @@
         <% if current_account.is_coordenador? %>
           <%= render 'layouts/links_coordenador' %>
         <% end %>
+          <% if current_account.is_aluno? %>
+          <%= render 'layouts/links_aluno' %>
+          <% end %>
       <% end %>
     </ul>
     <% if account_signed_in? %>

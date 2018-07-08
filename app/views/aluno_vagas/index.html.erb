@@ -1,33 +1,19 @@
-<p id="notice"><%= notice %></p>
+<h1>Candidaturas</h1>
+<% if @aluno_vagas.present? %>
+  <% if current_account.is_aluno? %>
+    <%= render partial: 'table_aluno_vagas_aluno',
+               locals: { aluno_vagas: @aluno_vagas } %>
+  <% end %>
+  <% if current_account.is_empresa? %>
+    <%= render partial: 'table_aluno_vagas_empresa',
+               locals: { aluno_vagas: @aluno_vagas } %>
+  <% end %>
 
-<h1>Aluno Vagas</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Vaga</th>
-      <th>Aluno</th>
-      <th>Validado coordenador</th>
-      <th>Validado empresa</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @aluno_vagas.each do |aluno_vaga| %>
-      <tr>
-        <td><%= aluno_vaga.vaga %></td>
-        <td><%= aluno_vaga.aluno %></td>
-        <td><%= aluno_vaga.validado_coordenador %></td>
-        <td><%= aluno_vaga.validado_empresa %></td>
-        <td><%= link_to 'Show', aluno_vaga %></td>
-        <td><%= link_to 'Edit', edit_aluno_vaga_path(aluno_vaga) %></td>
-        <td><%= link_to 'Destroy', aluno_vaga, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+  <% if current_account.is_coordenador? %>
+      <%= render partial: 'table_aluno_vagas_coordenador',
+                 locals: { aluno_vagas: @aluno_vagas } %>
+  <% end %>
 <br>
-
-<%= link_to 'New Aluno Vaga', new_aluno_vaga_path %>
+<% else %>
+  <div class="alert alert-info"> Não há nenhuma candidatura</div>
+<% end %>

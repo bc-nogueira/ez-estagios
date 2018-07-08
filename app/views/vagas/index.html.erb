@@ -3,18 +3,32 @@
 <h1>Vagas</h1>
 
 <% @vagas.each do |vaga| %>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="media align-items-center text-muted py-3 px-3">
+        <%= image_tag  'sti.svg', class: 'px-3 mr-4 rounded border border-gray imagem-lista-vagas' %>
+        <p class="media-body pb-3 mb-0 lh-125 pr-5">
+          <strong class="d-block text-gray-dark"><%= vaga.titulo %></strong>
+          <span class="d-block pb-2 small"><%= vaga.empresa.nome %></span>
+          <%= vaga.descricao %>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex align-self-center align-items-end">
+          <%= link_to 'Ver mais detalhes', vaga, class: 'btn btn-outline-primary m-2 ml-auto' %>
 
-  <div class="media align-items-center text-muted py-3 px-3 border-top border-gray">
-    <%= image_tag  'sti.svg', class: 'px-3 mr-4 rounded border border-gray imagem-lista-vagas' %>
-    <p class="media-body pb-3 mb-0 lh-125 pr-5">
-      <strong class="d-block text-gray-dark"><%= vaga.titulo %></strong>
-      <span class="d-block pb-2 small"><%= vaga.empresa.nome %></span>
-      <%= vaga.descricao %>
-    </p>
-    <%= link_to 'Ver mais detalhes', vaga, class: 'btn btn-outline-primary' %>
+          <% if current_account.is_aluno? %>
+                <%= form_for AlunoVaga.new do |f| %>
+                    <%= f.hidden_field :vaga_id, value: vaga.id %>
+                    <%= f.submit 'Inscrever-se', class: 'btn btn-primary m-2 ml-auto' %>
+                <% end %>
+          <% end %>
+
+    </div>
   </div>
-
 <% end %>
 <br>
-
-<%= link_to 'Adicionar Vaga', new_vaga_path, class: 'btn btn-primary' %>
+<% if current_account.is_empresa? %>
+    <%= link_to 'Adicionar Vaga', new_vaga_path, class: 'btn btn-primary' %>
+<% end %>
