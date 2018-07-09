@@ -7,11 +7,11 @@
   <div class="row">
     <div class="col-md-6">
       <div class="media align-items-center text-muted py-3 px-3">
-        <%= image_tag  'sti.svg', class: 'px-3 mr-4 rounded border border-gray imagem-lista-vagas' %>
+        <%= image_tag vaga.empresa_avatar.medium.url, class: 'px-3 mr-4 rounded border border-gray imagem-lista-vagas' %>
         <p class="media-body pb-3 mb-0 lh-125 pr-5">
           <strong class="d-block text-gray-dark"><%= vaga.titulo %></strong>
-          <span class="d-block pb-2 small"><%= vaga.empresa.nome %></span>
-          <%= vaga.descricao %>
+          <span class="d-block pb-2 small"><%= vaga.empresa_nome %></span>
+          <%= simple_format(vaga.descricao, {}, wrapper_tag: "span") %>
         </p>
       </div>
     </div>
