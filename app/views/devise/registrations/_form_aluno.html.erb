@@ -1,5 +1,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <% if is_criacao_aluno? %>
+    <%= devise_error_messages! %>
+  <% end %>
 
   <%= f.fields_for :pessoa do |e| %>
     <div class="form-group">
