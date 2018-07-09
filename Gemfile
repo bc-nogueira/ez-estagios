@@ -21,6 +21,8 @@ gem 'turbolinks', '~> 5'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n'
 gem 'uglifier', '>= 1.3.0'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.8'
