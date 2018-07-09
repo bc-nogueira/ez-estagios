@@ -2,21 +2,27 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-      <a class="nav-link active" id="aluno-form-tab" data-toggle="tab" href="#aluno-form" role="tab"
-         aria-controls="aluno-form" aria-selected="true">Sou um Aluno</a>
+      <a class="nav-link  <%= 'active' if is_criacao_aluno? %>" id="aluno-form-tab" data-toggle="tab"
+         href="#aluno-form" role="tab" aria-controls="aluno-form" aria-selected="true">
+        Sou um Aluno
+      </a>
     </li>
       <li class="nav-item">
-        <a class="nav-link" id="empresa-form-tab" data-toggle="tab" href="#empresa-form" role="tab"
-           aria-controls="empresa-form" aria-selected="true">Sou uma Empresa</a>
+        <a class="nav-link  <%= 'active' unless is_criacao_aluno? %>" id="empresa-form-tab" data-toggle="tab"
+           href="#empresa-form" role="tab" aria-controls="empresa-form" aria-selected="true">
+          Sou uma Empresa
+        </a>
       </li>
     </ul>
   </div>
   <div class="card-body">
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="aluno-form" role="tabpanel" aria-labelledby="aluno-form-tab">
+      <div class="tab-pane fade <%= 'show active' if is_criacao_aluno? %>" id="aluno-form" role="tabpanel"
+           aria-labelledby="aluno-form-tab">
         <%= render 'devise/registrations/form_aluno' %>
       </div>
-      <div class="tab-pane fade" id="empresa-form" role="tabpanel" aria-labelledby="empresa-form-tab">
+      <div class="tab-pane fade <%= 'show active' unless is_criacao_aluno? %>" id="empresa-form" role="tabpanel"
+           aria-labelledby="empresa-form-tab">
         <%= render 'devise/registrations/form_empresa' %>
       </div>
     </div>
