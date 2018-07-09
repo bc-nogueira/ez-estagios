@@ -10,5 +10,10 @@ Account.create({ email: 'guanabara@gmail.com', password: '123456', perfil: guana
 
 # Cria um coordenador com sua conta
 coord = Coordenador.new(curso: 'Sistemas de Informação')
-pessoa = Pessoa.new({ nome: 'Breno', cpf: '11111111111', papel: coord })
-Account.create({ email: 'breno@gmail.com', password: '123456', perfil: pessoa })
+pessoa1 = Pessoa.new({ nome: 'Breno', cpf: '11111111111', papel: coord })
+Account.create({ email: 'breno@gmail.com', password: '123456', perfil: pessoa1 })
+
+# Cria um aluno com sua conta
+aluno = Aluno.new({ matricula: '115083001', periodo: 5 })
+pessoa2 = Pessoa.new({ nome: 'Romulo', cpf: '44444444444', papel: aluno })
+Account.create({ email: 'romulo@gmail.com', password: '123456', perfil: pessoa2 })

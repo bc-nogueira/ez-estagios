@@ -1,6 +1,6 @@
 class AlunoService
   def initialize(params)
-    @pessoa = params.require(:pessoa).permit(:nome)
+    @pessoa = params.require(:pessoa).permit(:nome, :cpf)
     @aluno =  params.require(:aluno).permit([:matricula, :periodo])
   end
 

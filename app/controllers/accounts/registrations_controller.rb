@@ -18,7 +18,6 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
     if params[:account][:pessoa]
       aluno = AlunoService.new(params[:account]).create_aluno
       @account.update_attributes(perfil: aluno)
-      #@account.update_attributes(perfil: Empresa.new(empresa_params))
     end
   end
 
@@ -46,7 +45,7 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

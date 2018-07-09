@@ -6,6 +6,11 @@
       <%= e.label :nome %>
       <%= e.text_field :nome, class: 'form-control' %>
     </div>
+
+    <div class="form-group">
+      <%= e.label :cpf %>
+      <%= e.text_field :cpf, class: 'form-control' %>
+    </div>
   <% end %>
 
   <%= f.fields_for :aluno do |e| %>
