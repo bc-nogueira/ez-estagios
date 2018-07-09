@@ -7,11 +7,9 @@ class EmpresasController < ApplicationController
 
   def show; end
 
-  def edit  
-  end
+  def edit; end
 
   def update
-    binding.pry
     respond_to do |format|
       if @empresa.update(empresa_params)
         format.html { redirect_to @empresa, notice: 'Seu perfil foi atualizado!' }
@@ -22,7 +20,7 @@ class EmpresasController < ApplicationController
   end
 
   def update_validacao
-    @empresa.update_attributes(validada: params[:empresa][:status])
+    @empresa.update(validada: params[:empresa][:status])
     redirect_to empresas_path
   end
 
