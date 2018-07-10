@@ -20,6 +20,7 @@ class VagasController < ApplicationController
 
   def create
     @vaga = Vaga.new(vaga_params)
+    @vaga.empresa_id = current_account.perfil_id
     if @vaga.save
       flash[:success] = 'Vaga foi criada com sucesso.'
       return redirect_to @vaga
@@ -57,6 +58,5 @@ class VagasController < ApplicationController
   def vaga_params
     params.require(:vaga).permit(:titulo, :validada, :descricao,
                                  :data_fim, :data_resposta)
-      .merge(empresa_id: current_account.perfil.id)
   end
 end
