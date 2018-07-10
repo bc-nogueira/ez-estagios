@@ -13,21 +13,21 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Thumb
   version :thumb do
-     process resize_to_fit: [50, 50]
+    process resize_to_fit: [50, 50]
   end
 
   # Medium
   version :medium do
-     process resize_to_fit: [150, 150]
+    process resize_to_fit: [150, 150]
   end
 
   # Big
   version :big do
-     process resize_to_fit: [300, 300]
+    process resize_to_fit: [300, 300]
   end
 
   # Tipos de extensão aceitas
   def extension_whitelist
-     %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png)
   end
 end

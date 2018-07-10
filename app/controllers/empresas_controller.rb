@@ -10,13 +10,11 @@ class EmpresasController < ApplicationController
   def edit; end
 
   def update
-    respond_to do |format|
-      if @empresa.update(empresa_params)
-        format.html { redirect_to @empresa, notice: 'Seu perfil foi atualizado!' }
-      else
-        format.html { render :edit }
-      end
+    if @empresa.update(empresa_params)
+      flash[:success] = 'Seu perfil foi atualizado!'
+      return redirect_to @empresa
     end
+    render :edit
   end
 
   def update_validacao

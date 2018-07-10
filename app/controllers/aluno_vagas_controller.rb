@@ -2,8 +2,12 @@ class AlunoVagasController < ApplicationController
   before_action :set_aluno_vaga, only: [:show, :edit, :update, :destroy]
 
   def index
-    return @aluno_vagas = AlunoVaga.por_aluno(current_aluno) if current_aluno
-    return @aluno_vagas = AlunoVaga.por_empresa(current_empresa) if current_empresa
+    if current_aluno
+      return @aluno_vagas = AlunoVaga.por_aluno(current_aluno)
+    end
+    if current_empresa
+      return @aluno_vagas = AlunoVaga.por_empresa(current_empresa)
+    end
     @aluno_vagas = AlunoVaga.all
   end
 
@@ -34,7 +38,9 @@ class AlunoVagasController < ApplicationController
 
   def destroy
     @aluno_vaga.destroy
-    flash[:success] = 'Inscrição cancelada com sucesso' if @aluno_vaga.persisted?
+    if @aluno_vaga.persisted
+      flash[:success] = 'Candidatura cancelada com sucesso'
+    end
     redirect_to aluno_vagas_path
   end
 

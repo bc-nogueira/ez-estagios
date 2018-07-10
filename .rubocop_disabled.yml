@@ -166,3 +166,15 @@ Rails/ApplicationRecord:
 
 Lint/AmbiguousBlockAssociation:
   Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Security/YAMLLoad:
+  Enabled: false

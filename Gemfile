@@ -18,12 +18,12 @@ gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 
+gem 'active_link_to'
+gem 'carrierwave'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise-i18n'
-gem 'uglifier', '>= 1.3.0'
-gem 'carrierwave'
 gem 'mini_magick'
-gem 'active_link_to'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.8'

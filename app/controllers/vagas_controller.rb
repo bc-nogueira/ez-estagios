@@ -1,7 +1,6 @@
 class VagasController < ApplicationController
   before_action :set_vaga, only: [:show, :edit, :update, :destroy,
                                   :update_validacao]
-
   def index
     if current_account.is_empresa?
       return @vagas = Vaga.por_empresa(current_account.perfil_id)
@@ -21,28 +20,19 @@ class VagasController < ApplicationController
 
   def create
     @vaga = Vaga.new(vaga_params)
-
-    respond_to do |format|
-      if @vaga.save
-        format.html { redirect_to @vaga, notice: 'Vaga foi criada com sucesso.' }
-        format.json { render :show, status: :created, location: @vaga }
-      else
-        format.html { render :new }
-        format.json { render json: @vaga.errors, status: :unprocessable_entity }
-      end
+    if @vaga.save
+      flash[:success] = 'Vaga foi criada com sucesso.'
+      return redirect_to @vaga
     end
+    render :new
   end
 
   def update
-    respond_to do |format|
-      if @vaga.update(vaga_params)
-        format.html { redirect_to @vaga, notice: 'Vaga foi atualizada com sucesso.' }
-        format.json { render :show, status: :ok, location: @vaga }
-      else
-        format.html { render :edit }
-        format.json { render json: @vaga.errors, status: :unprocessable_entity }
-      end
+    if @vaga.update(vaga_params)
+      flash[:succes] = 'Vaga foi atualizada com sucesso.'
+      return redirect_to @vaga
     end
+    render :edit
   end
 
   def update_validacao
@@ -54,20 +44,19 @@ class VagasController < ApplicationController
 
   def destroy
     @vaga.destroy
-    respond_to do |format|
-      format.html { redirect_to vagas_url, notice: 'Vaga foi excluída com sucesso.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Vaga foi excluída com sucesso.'
+    redirect_to vagas_url
   end
 
   private
-    def set_vaga
-      @vaga = Vaga.find(params[:id])
-    end
 
-    def vaga_params
-      params.require(:vaga).permit(:titulo, :validada, :descricao,
-                                   :data_fim, :data_resposta)
-          .merge(empresa_id: current_account.perfil.id)
-    end
+  def set_vaga
+    @vaga = Vaga.find(params[:id])
+  end
+
+  def vaga_params
+    params.require(:vaga).permit(:titulo, :validada, :descricao,
+                                 :data_fim, :data_resposta)
+      .merge(empresa_id: current_account.perfil.id)
+  end
 end
