@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<%= link_to 'Voltar', empresas_path, class: 'btn btn-secondary' %>
+<%= link_to 'Voltar', url_for(:back), class: 'btn btn-secondary' %>
 <% if current_account.is_empresa? && current_account.perfil.id == @empresa.id %>
   <%= link_to 'Editar', edit_empresa_path, class: 'btn btn-outline-info' %>
 <% end %>
