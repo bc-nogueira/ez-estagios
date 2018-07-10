@@ -1,31 +1,23 @@
 class VagaHabilidadesController < ApplicationController
   before_action :set_vaga_habilidade, only: [:show, :edit, :update, :destroy]
 
-  # GET /vaga_habilidades
-  # GET /vaga_habilidades.json
   def index
     @vaga_habilidades = VagaHabilidade.all
   end
 
-  # GET /vaga_habilidades/1
-  # GET /vaga_habilidades/1.json
+
   def show
   end
 
-  # GET /vaga_habilidades/new
   def new
     @vaga_habilidade = VagaHabilidade.new
   end
 
-  # GET /vaga_habilidades/1/edit
   def edit
   end
 
-  # POST /vaga_habilidades
-  # POST /vaga_habilidades.json
   def create
     @vaga_habilidade = VagaHabilidade.new(vaga_habilidade_params)
-
     respond_to do |format|
       if @vaga_habilidade.save
         format.html { redirect_to @vaga_habilidade, notice: 'Vaga habilidade was successfully created.' }

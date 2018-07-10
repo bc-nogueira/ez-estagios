@@ -19,7 +19,28 @@
           <div class="col-md-6 d-flex align-self-center align-items-end">
             <%= link_to 'Ver mais detalhes', vaga, class: 'btn btn-outline-primary m-2 ml-auto' %>
 
-            <% if current_account.is_aluno? && current_account.perfil.papel.validado %>
+            
+      <% @vagas.each do |vaga| %>
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="media align-items-center text-muted py-3 px-3">
+              <% if vaga.empresa_avatar.present? %>
+                <%= image_tag vaga.empresa_avatar.medium.url, class: 'px-3 mr-4 rounded border border-gray imagem-lista-vagas' %>
+              <% else %>
+              <%= image_tag "default_company.png", class: 'px-3 mr-4 rounded border border-gray imagem-lista-vagas' %>
+              <% end %>
+              <p class="media-body pb-3 mb-0 lh-125 pr-5">
+                <strong class="d-block text-gray-dark"><%= vaga.titulo %></strong>
+                <span class="d-block pb-2 small"><%= vaga.empresa_nome %></span>
+                <%= simple_format(vaga.descricao, {}, wrapper_tag: "span") %>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex align-self-center align-items-end">
+          <%= link_to 'Ver mais detalhes', vaga, class: 'btn btn-outline-primary m-2 ml-auto' %>
+
+          <% if current_account.is_aluno? && current_account.perfil.papel.validado %>
                 <%= form_for AlunoVaga.new do |f| %>
                     <%= f.hidden_field :vaga_id, value: vaga.id %>
                     <%= f.submit 'Inscrever-se', class: 'btn btn-primary m-2 ml-auto' %>

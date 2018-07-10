@@ -10,7 +10,8 @@ class VagasController < ApplicationController
     @vagas = Vaga.all
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @vaga = Vaga.new
