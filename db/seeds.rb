@@ -39,22 +39,22 @@ Account.create({ email: 'romulo@gmail.com', password: '123456',
                  perfil: romulo })
 
 # Cria vaga para empresa
-vaga1 = Vaga.create(empresa_id: sti.id, titulo: 'Desenvolvedor Java',
+vaga1 = Vaga.create(empresa_id: uff.id, titulo: 'Desenvolvedor Java',
             descricao: "- Noções de programação em Java \n - Bolsa: R$ 800,00",
             validada: true, data_fim: Time.now + 2.days ,
             data_resposta: Time.now + 4.days)
 
-vaga2 = Vaga.create(empresa_id: sti.id, titulo: 'Desenvolvedor Ruby',
+vaga2 = Vaga.create(empresa_id: uff.id, titulo: 'Desenvolvedor Ruby',
             descricao: "- Noções de programação em Ruby \n - Bolsa: R$ 900,00",
             validada: false, data_fim: Time.now + 2.days ,
             data_resposta: Time.now + 4.days)
 
-vaga3 = Vaga.create(empresa_id: uff.id, titulo: 'Desenvolvedor Ruby',
+vaga3 = Vaga.create(empresa_id: guanabara.id, titulo: 'Desenvolvedor Ruby',
             descricao: "- Noções de programação em Ruby \n - Bolsa: R$ 1000,00",
             validada: false, data_fim: Time.now + 2.days ,
             data_resposta: Time.now + 4.days)
 
-Vaga.create(empresa_id: guanabara.id, titulo: 'Desenvolvedor Ruby',
+Vaga.create(empresa_id: sti.id, titulo: 'Desenvolvedor Ruby',
             descricao: "- Noções de programação em Ruby \n - Bolsa: R$ 700,00",
             validada: true, data_fim: Time.now + 2.days ,
             data_resposta: Time.now + 4.days)
