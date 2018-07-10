@@ -26,3 +26,38 @@ body {
   width: 128px;
   height: 128px;
 }
+
+.content {
+  min-height: 80vh;
+}
+/* footer */
+
+footer {
+  padding: 1em 0 0 0;
+  margin: 3em 0 0 0;
+  min-height: 10em;
+  background-color: #2A4C6D;
+  color: #DDD;
+  a {
+    color: #DDD;
+    &:hover {
+      color: #FFF;
+    }
+  }
+  small {
+    float: left;
+  }
+  .icone-footer {
+    i {
+      font-size: 30px;
+    }
+  }
+  ul {
+    padding-left: 0;
+    float: left;
+    list-style: none;
+    li {
+      font-size: 15px;
+    }
+  }
+}
