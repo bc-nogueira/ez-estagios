@@ -1,14 +1,13 @@
 class VagasController < ApplicationController
-  before_action :set_vaga, only: [:show, :edit, :update, :destroy]
+  before_action :set_vaga, only: [:show, :edit, :update, :destroy,
+                                  :update_validacao]
 
   def index
     if current_account.is_empresa?
-      @vagas = Vaga.por_empresa(current_account.perfil_id)
+      return @vagas = Vaga.por_empresa(current_account.perfil_id)
     end
-
-    if current_account.is_aluno?
-      @vagas = Vaga.validadas
-    end
+    return @vagas = Vaga.validadas if current_account.is_aluno?
+    @vagas = Vaga.all
   end
 
   def show; end
@@ -45,6 +44,13 @@ class VagasController < ApplicationController
     end
   end
 
+  def update_validacao
+    salvou = @vaga.update(vaga_params)
+    flash[:success] = 'Vaga atualizada com sucesso' if salvou
+    flash[:danger] = 'Ocorreu um erro ao atualizar a vaga' unless salvou
+    redirect_to vagas_path
+  end
+
   def destroy
     @vaga.destroy
     respond_to do |format|
@@ -59,7 +65,8 @@ class VagasController < ApplicationController
     end
 
     def vaga_params
-      params.require(:vaga).permit(:titulo, :descricao, :data_fim, :data_resposta)
+      params.require(:vaga).permit(:titulo, :validada, :descricao,
+                                   :data_fim, :data_resposta)
           .merge(empresa_id: current_account.perfil.id)
     end
 end

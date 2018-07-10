@@ -9,6 +9,11 @@
   <% end %>
 </li>
 <li class="nav-item">
+  <%= link_to vagas_path, class: 'nav-link' do %>
+    <%= fa_icon('briefcase') %> Vagas
+  <% end %>
+</li>
+<li class="nav-item">
   <%= link_to aluno_vagas_path, class: 'nav-link' do %>
       <%= fa_icon('list') %> Candidaturas
   <% end %>

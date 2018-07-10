@@ -1,0 +1,52 @@
+<% if vagas.blank? %>
+    <div class="alert alert-info">
+      Não existem vagas em <%= estado_vaga %> para sem avaliadas.
+    </div>
+<% else %>
+    <table class="table">
+      <thead>
+      <tr class="d-flex">
+        <th scope="col" class="col-2">Nome</th>
+        <th scope="col" class="col-4">Descricao</th>
+        <th scope="col" class="col-2">Data Fim</th>
+        <th scope="col" class="col-2">Data Resposta</th>
+        <th scope="col" class="col-2">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% vagas.each do |vaga| %>
+          <tr class="d-flex">
+            <td class="col-2">
+              <%= link_to vaga_path(vaga.id) do %>
+                  <%= vaga.empresa.nome %>
+              <% end %>
+            </td>
+            <td class="col-4"><%= vaga.descricao %></td>
+            <td class="col-2"><%= vaga.data_fim.strftime("%d/%m/%Y") %></td>
+            <td class="col-2"><%= vaga.data_resposta.strftime("%d/%m/%Y") %></td>
+            <td class="col-2">
+              <div class="row">
+                <% if estado_vaga == :reprovada || estado_vaga.nil? %>
+                    <%= form_for vaga, url: update_validacao_vaga_path(vaga.id) do |f| %>
+                        <%= f.hidden_field :validada, value: true %>
+                        <%= f.button :submit, class: 'btn btn-success rounded-0' do %>
+                            <%= fa_icon 'check' %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+
+                <% if estado_vaga == :aprovada || estado_vaga.nil? %>
+                    <%= form_for vaga, url: update_validacao_vaga_path(vaga.id) do |f| %>
+                        <%= f.hidden_field :validada, value: false %>
+                        <%= f.button :submit, class: 'btn btn-danger rounded-0' do %>
+                            <%= fa_icon 'times' %>
+                        <% end %>
+                        </div>
+                    <% end %>
+                <% end %>
+                </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
