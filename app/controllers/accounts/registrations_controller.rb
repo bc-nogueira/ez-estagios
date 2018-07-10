@@ -13,7 +13,12 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   def create
     super
     if params[:account][:empresa]
-      @account.update_attributes(perfil: Empresa.new(empresa_params))
+      empresa = Empresa.new(empresa_params)
+      if empresa.valid?
+        @account.update_attributes(perfil: empresa)
+      else
+        @account.destroy
+      end
     end
     if params[:account][:pessoa]
       aluno = AlunoService.new(params[:account]).create_aluno
