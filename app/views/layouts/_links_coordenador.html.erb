@@ -1,20 +1,20 @@
 <li class="nav-item">
-  <%= link_to empresas_path, class: 'nav-link' do %>
+  <%= active_link_to empresas_path, class: 'nav-link' do %>
     <%= fa_icon('building') %> Empresas
   <% end %>
 </li>
 <li class="nav-item">
-  <%= link_to alunos_path, class: 'nav-link' do %>
+  <%= active_link_to alunos_path, class: 'nav-link' do %>
     <%= fa_icon('users') %> Alunos
   <% end %>
 </li>
 <li class="nav-item">
-  <%= link_to vagas_path, class: 'nav-link' do %>
+  <%= active_link_to vagas_path, class: 'nav-link' do %>
     <%= fa_icon('briefcase') %> Vagas
   <% end %>
 </li>
 <li class="nav-item">
-  <%= link_to aluno_vagas_path, class: 'nav-link' do %>
+  <%= active_link_to aluno_vagas_path, class: 'nav-link' do %>
       <%= fa_icon('list') %> Candidaturas
   <% end %>
 </li>

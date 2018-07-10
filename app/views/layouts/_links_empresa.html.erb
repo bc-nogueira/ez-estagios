@@ -1,6 +1,6 @@
 <li class="nav-item">
   <% if current_account.perfil.validada %>
-    <%= link_to vagas_path, class: 'nav-link' do %>
+    <%= active_link_to vagas_path, class: 'nav-link' do %>
       <%= fa_icon('briefcase') %> Vagas
     <% end %>
   <% end %>
