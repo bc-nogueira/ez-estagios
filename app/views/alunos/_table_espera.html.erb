@@ -1,0 +1,47 @@
+<% if alunos.blank? %>
+  <div class="alert alert-info">
+    Não existem alunos em espera para serem validados.
+  </div>
+<% else %>
+  <table class="table">
+    <thead>
+    <tr class="d-flex">
+      <th scope="col" class="col-3">Nome</th>
+      <th scope="col" class="col-2">CPF</th>
+      <th scope="col" class="col-2">Matrícula</th>
+      <th scope="col" class="col-3">E-mail</th>
+      <th scope="col" class="col-2">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% alunos.each do |aluno| %>
+      <tr class="d-flex">
+        <td class="col-3">
+          <%= link_to aluno_path(aluno.id) do %>
+            <%= aluno.pessoa.nome %>
+          <% end %>
+        </td>
+        <td class="col-2"><%= aluno.pessoa.cpf %></td>
+        <td class="col-2"><%= aluno.matricula %></td>
+        <td class="col-3"><%= aluno.pessoa.account.email %></td>
+        <td class="col-2">
+          <div class="row">
+            <%= form_for aluno, url: update_validacao_aluno_path(aluno.id) do |f| %>
+              <%= f.hidden_field :status, value: true %>
+              <%= f.button :submit, class: 'btn btn-success rounded-0' do %>
+                <%= fa_icon 'check' %>
+              <% end %>
+            <% end %>
+            <%= form_for aluno, url: update_validacao_aluno_path(aluno.id) do |f| %>
+              <%= f.hidden_field :status, value: false %>
+              <%= f.button :submit, class: 'btn btn-danger rounded-0' do %>
+                <%= fa_icon 'times' %>
+              <% end %>
+              </div>
+            <% end %>
+          </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -1,0 +1,27 @@
+<h1 class="text-center">Alunos</h1>
+
+<h2 class="pointer-cursor" id="alunos-espera-title">
+  Em Espera <%= fa_icon 'angle-down', id: 'espera-icon' %>
+</h2>
+<div id="alunos-espera-div" style="display: none">
+  <%= render partial: 'alunos/table_espera',
+             locals: { alunos: @alunos.select { |aluno| aluno.validado == nil } } %>
+</div>
+<hr>
+
+<h2 class="pointer-cursor text-success" id="alunos-aprovados-title">
+  Aprovados <%= fa_icon 'angle-down', id: 'aprovadas-icon' %>
+</h2>
+<div id="alunos-aprovados-div" style="display: none">
+  <%= render partial: 'alunos/table_aprovados',
+             locals: { alunos: @alunos.select { |aluno| aluno.validado == true } } %>
+</div>
+<hr>
+
+<h2 class="pointer-cursor text-danger" id="alunos-reprovados-title">
+  Reprovados  <%= fa_icon 'angle-down', id: 'reprovadas-icon' %>
+</h2>
+<div id="alunos-reprovados-div" style="display: none">
+  <%= render partial: 'alunos/table_reprovados',
+             locals: { alunos: @alunos.select { |aluno| aluno.validado == false } } %>
+</div>

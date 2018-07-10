@@ -1,0 +1,30 @@
+<% if alunos.blank? %>
+  <div class="alert alert-info">
+    Não existem alunos reprovados.
+  </div>
+<% else %>
+  <table class="table">
+    <thead>
+    <tr class="d-flex">
+      <th scope="col" class="col-3">Nome</th>
+      <th scope="col" class="col-2">CPF</th>
+      <th scope="col" class="col-2">Matrícula</th>
+      <th scope="col" class="col-5">E-mail</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% alunos.each do |aluno| %>
+      <tr class="d-flex">
+        <td class="col-3">
+          <%= link_to aluno_path(aluno.id) do %>
+            <%= aluno.pessoa.nome %>
+          <% end %>
+        </td>
+        <td class="col-2"><%= aluno.pessoa.cpf %></td>
+        <td class="col-2"><%= aluno.matricula %></td>
+        <td class="col-5"><%= aluno.pessoa.account.email %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
