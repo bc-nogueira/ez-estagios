@@ -1,6 +1,6 @@
 <% if vagas.blank? %>
     <div class="alert alert-info">
-      Não existem vagas em <%= estado_vaga %> para sem avaliadas.
+      Não existem vagas <%= estado_vaga.to_s.pluralize %> para sem avaliadas.
     </div>
 <% else %>
     <table class="table">
