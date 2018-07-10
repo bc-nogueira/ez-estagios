@@ -46,8 +46,7 @@ vaga1 = Vaga.create(empresa_id: uff.id, titulo: 'Desenvolvedor Java',
 
 vaga2 = Vaga.create(empresa_id: uff.id, titulo: 'Desenvolvedor Ruby',
             descricao: "- Noções de programação em Ruby \n - Bolsa: R$ 900,00",
-            validada: false, data_fim: Time.now + 2.days ,
-            data_resposta: Time.now + 4.days)
+            data_fim: Time.now + 2.days, data_resposta: Time.now + 4.days)
 
 vaga3 = Vaga.create(empresa_id: guanabara.id, titulo: 'Desenvolvedor Ruby',
             descricao: "- Noções de programação em Ruby \n - Bolsa: R$ 1000,00",

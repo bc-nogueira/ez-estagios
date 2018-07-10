@@ -24,13 +24,20 @@
 
       <div class="row">
         <strong class="col-2">Data fim:</strong>
-        <%= @vaga.data_fim.to_date %>
+        <%= @vaga.data_fim.strftime("%d/%m/%Y") %>
       </div>
 
       <div class="row">
         <strong class="col-2">Data resposta:</strong>
-        <%= @vaga.data_resposta.to_date %>
+        <%= @vaga.data_resposta.strftime("%d/%m/%Y") %>
       </div>
+
+      <% if current_account.is_empresa? && current_account.perfil.id == @vaga.empresa.id %>
+        <div class="row">
+          <strong class="col-2">Situação:</strong>
+          <%= texto_situacao_vaga @vaga %>
+        </div>
+      <% end %>
     </div>
   </div>
   <hr>
@@ -42,32 +49,7 @@
   </div>
 </div>
 
-<% if current_account.is_empresa? %>
-  <div class="card p-3 mb-3">
-    <h5>Adicionar Habilidades</h5>
-
-    <%= form_for VagaHabilidade.new do |f| %>
-      <%= f.hidden_field :vaga_id, value: @vaga.id %>
-      <div class="form-row">
-        <div class="form-group col">
-          <%= f.label :habilidade_id %>
-          <%= f.select :habilidade_id, options_from_collection_for_select(Habilidade.all, :id, :nome), {}, class:"form-control" %>
-        </div>
-
-        <div class="form-group col">
-          <%= f.label :nivel %>
-          <%= f.select :nivel, options_for_select([:basico, :intermediario, :avancado]), {}, class:"form-control" %>
-        </div>
-
-        <div class="form-group col">
-          <label class="d-block">-</label>
-          <%= f.submit '+', class: 'btn btn-primary' %>
-        </div>
-      </div>
-    <% end %>
-
-  </div>
-<% end %>
+<%= render 'vagas/habilidades' %>
 
 <div class="card p-3 mb-3">
   <% if current_account.is_empresa? %>
