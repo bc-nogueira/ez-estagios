@@ -20,11 +20,9 @@ class VagaHabilidadesController < ApplicationController
     @vaga_habilidade = VagaHabilidade.new(vaga_habilidade_params)
     respond_to do |format|
       if @vaga_habilidade.save
-        format.html { redirect_to @vaga_habilidade, notice: 'Vaga habilidade was successfully created.' }
-        format.json { render :show, status: :created, location: @vaga_habilidade }
+        format.html { redirect_to vaga_path(id: @vaga_habilidade[:vaga_id]), notice: 'Nova Habilidade adicionada!' }
       else
         format.html { render :new }
-        format.json { render json: @vaga_habilidade.errors, status: :unprocessable_entity }
       end
     end
   end
