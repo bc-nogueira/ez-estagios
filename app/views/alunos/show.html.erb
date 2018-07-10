@@ -24,4 +24,6 @@
 </div>
 
 <%= link_to 'Voltar', alunos_path, class: 'btn btn-secondary' %>
-<%= link_to 'Editar', edit_aluno_path, class: 'btn btn-outline-info' %>
+<% if current_account.is_aluno? && current_account.perfil.papel.id == @aluno.id %>
+  <%= link_to 'Editar', edit_aluno_path, class: 'btn btn-outline-info' %>
+<% end %>
