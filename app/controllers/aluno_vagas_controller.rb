@@ -47,6 +47,5 @@ class AlunoVagasController < ApplicationController
   def aluno_vaga_params
     params.require(:aluno_vaga)
       .permit(:vaga_id, :aluno_id, :validado_coordenador, :validado_empresa)
-      .merge(aluno_id: current_account.perfil.papel.id)
   end
 end

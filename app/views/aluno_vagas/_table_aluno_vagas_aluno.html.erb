@@ -20,12 +20,15 @@
             <td><%= aluno_vaga.aluno.matricula %></td>
         <% end %>
         <td><%= texto_situacao_aluno_vaga(aluno_vaga) %></td>
-
-        <% if current_account.is_aluno? %>
-            <td><%= link_to 'Cancelar Inscrição', aluno_vaga, method: :delete,
+        <td style="width: 20%">
+        <% if current_account.is_aluno? && aluno_vaga.validado_empresa.nil? %>
+            <%= link_to 'Cancelar Inscrição', aluno_vaga, method: :delete,
                             class: 'btn btn-danger pull-right',
-                            data: { confirm: 'Você tem certeza?' } %></td>
+                            data: { confirm: 'Você tem certeza?' } %>
+        <% else %>
+          <span class="pull-right">Ações Indisponíveis</span>
         <% end %>
+        </td>
       </tr>
   <% end %>
   </tbody>
