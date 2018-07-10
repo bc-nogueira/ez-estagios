@@ -6,15 +6,18 @@ Rails.application.routes.draw do
   resources :aluno_habilidades
   resources :vaga_habilidades
   resources :aluno_vagas
-  resources :vagas
   resources :habilidades
 
   # Páginas que precisam de login para serem acessadas
   authenticate :account do
+    resources :instrucao, only: :index
+    resources :vagas do
+      patch 'update_validacao', on: :member
+    end
+
     resources :empresas, only: [:index, :show, :update, :edit] do
       patch 'update_validacao', on: :member
     end
-    resources :instrucao, only: :index
   end
 
   devise_for :accounts, controllers: { registrations: 'accounts/registrations' }
