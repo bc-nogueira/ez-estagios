@@ -1,4 +1,4 @@
-# Cria uma empresa nova, com sua conta
+# Cria empresas novas em diferentes estados de validações, com suas contas
 sti = Empresa.new({ nome: 'STI', cnpj: '111111', endereco: 'Valonguinho' })
 Account.create({ email: 'sti@gmail.com', password: '123456', perfil: sti })
 
@@ -18,15 +18,25 @@ Account.create({ email: 'visagio@gmail.com', password: '123456',
 
 # Cria um coordenador com sua conta
 coord = Coordenador.new(curso: 'Sistemas de Informação')
-pessoa1 = Pessoa.new({ nome: 'Breno', cpf: '11111111111', papel: coord })
-Account.create({ email: 'breno@gmail.com', password: '123456',
-                 perfil: pessoa1 })
+viterbo = Pessoa.new({ nome: 'Viterbo', cpf: '11111111111', papel: coord })
+Account.create({ email: 'viterbo@gmail.com', password: '123456',
+                 perfil: viterbo })
 
-# Cria um aluno com sua conta
-aluno = Aluno.new({ matricula: '115083001', periodo: 5 })
-pessoa2 = Pessoa.new({ nome: 'Romulo', cpf: '44444444444', papel: aluno })
+# Cria alunos em diferentes estados de validações, com suas contas
+aluno1 = Aluno.new({ matricula: '115083001', periodo: 7 })
+breno = Pessoa.new({ nome: 'Breno', cpf: '22222222222', papel: aluno1 })
+Account.create({ email: 'breno@gmail.com', password: '123456',
+                 perfil: breno })
+
+aluno2 = Aluno.new({ matricula: '114083001', periodo: 9, validado: false })
+gabriel = Pessoa.new({ nome: 'Gabriel', cpf: '33333333333', papel: aluno2 })
+Account.create({ email: 'gabriel@gmail.com', password: '123456',
+                 perfil: gabriel })
+
+aluno3 = Aluno.new({ matricula: '116083001', periodo: 5, validado: true })
+romulo = Pessoa.new({ nome: 'Romulo', cpf: '44444444444', papel: aluno3 })
 Account.create({ email: 'romulo@gmail.com', password: '123456',
-                 perfil: pessoa2 })
+                 perfil: romulo })
 
 # Cria vaga para empresa
 vaga1 = Vaga.create(empresa_id: sti.id, titulo: 'Desenvolvedor Java',
