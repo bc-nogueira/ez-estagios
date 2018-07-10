@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1 id="vagasIndex">Vagas</h1>
+<h1 class="text-center" id="vagasIndex">Vagas</h1>
 <hr/>
 <% if !current_account.is_coordenador? %>
     <% @vagas.each do |vaga| %>
@@ -19,7 +19,7 @@
           <div class="col-md-6 d-flex align-self-center align-items-end">
             <%= link_to 'Ver mais detalhes', vaga, class: 'btn btn-outline-primary m-2 ml-auto' %>
 
-            <% if current_account.is_aluno? %>
+            <% if current_account.is_aluno? && current_account.perfil.papel.validado %>
                 <%= form_for AlunoVaga.new do |f| %>
                     <%= f.hidden_field :vaga_id, value: vaga.id %>
                     <%= f.submit 'Inscrever-se', class: 'btn btn-primary m-2 ml-auto' %>

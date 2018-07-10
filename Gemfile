@@ -47,7 +47,7 @@ end
 
 group :production do
   # Postgres para rodar o app no Heroku
-  gem 'pg', '~> 1.0'
+  # gem 'pg', '~> 1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
