@@ -23,6 +23,7 @@ gem 'devise-i18n'
 gem 'uglifier', '>= 1.3.0'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'active_link_to'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.8'

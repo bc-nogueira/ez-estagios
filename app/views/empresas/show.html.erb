@@ -1,7 +1,11 @@
 <div class="card p-3 mb-3">
   <div class="row">
     <div class="col-2">
-      <%= image_tag @empresa.avatar.medium.url %>
+      <% if @empresa.avatar.present? %>
+        <%= image_tag @empresa.avatar.medium.url %>
+      <% else %>
+        <%= image_tag "default_company.png" %>
+      <% end %>
     </div>
 
     <div class="col-10">

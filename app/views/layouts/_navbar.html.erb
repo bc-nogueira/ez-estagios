@@ -8,14 +8,14 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to root_path, class: 'nav-link' do %>
+      <li class="nav-item">
+        <%= active_link_to root_path, active: :exact, class: 'nav-link' do %>
           <%= fa_icon('home') %> Home
         <% end %>
       </li>
       <% if account_signed_in? %>
         <li class="nav-item">
-          <%= link_to instrucao_index_path, class: 'nav-link' do %>
+          <%= active_link_to instrucao_index_path, class: 'nav-link' do %>
             <%= fa_icon('info') %> Instruções
           <% end %>
         </li>
@@ -49,8 +49,8 @@
 
       <%= link_to 'Sair', destroy_account_session_path, method: :delete, class: 'btn btn-outline-light my-2 my-sm-0' %>
     <% else %>
-      <%= link_to 'Entrar', new_account_session_path, class: 'btn btn-outline-light my-2 my-sm-0 mr-3' %>
-      <%= link_to 'Cadastrar', new_account_registration_path, class: 'btn btn-outline-light my-2 my-sm-0' %>
+      <%= active_link_to 'Entrar', new_account_session_path, class: 'btn btn-outline-light my-2 my-sm-0 mr-3' %>
+      <%= active_link_to 'Cadastrar', new_account_registration_path, class: 'btn btn-outline-light my-2 my-sm-0' %>
     <% end %>
   </div>
 </nav>
