@@ -1,34 +1,26 @@
 class AlunoHabilidadesController < ApplicationController
   before_action :set_aluno_habilidade, only: [:show, :edit, :update, :destroy]
 
-  # GET /aluno_habilidades
-  # GET /aluno_habilidades.json
   def index
     @aluno_habilidades = AlunoHabilidade.all
   end
 
-  # GET /aluno_habilidades/1
-  # GET /aluno_habilidades/1.json
   def show
   end
 
-  # GET /aluno_habilidades/new
   def new
     @aluno_habilidade = AlunoHabilidade.new
   end
 
-  # GET /aluno_habilidades/1/edit
   def edit
   end
 
-  # POST /aluno_habilidades
-  # POST /aluno_habilidades.json
   def create
     @aluno_habilidade = AlunoHabilidade.new(aluno_habilidade_params)
 
     respond_to do |format|
       if @aluno_habilidade.save
-        format.html { redirect_to @aluno_habilidade, notice: 'Aluno habilidade was successfully created.' }
+        format.html { redirect_to aluno_path(id: @aluno_habilidade[:aluno_id]), notice: 'Nova Habilidade adicionada!'  }
         format.json { render :show, status: :created, location: @aluno_habilidade }
       else
         format.html { render :new }
@@ -37,8 +29,6 @@ class AlunoHabilidadesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /aluno_habilidades/1
-  # PATCH/PUT /aluno_habilidades/1.json
   def update
     respond_to do |format|
       if @aluno_habilidade.update(aluno_habilidade_params)
