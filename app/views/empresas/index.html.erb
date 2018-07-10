@@ -1,27 +1,44 @@
 <h1 class="text-center">Empresas</h1>
 <hr/>
-<h2 class="pointer-cursor" id="empresas-espera-title">
-  Em Espera <%= fa_icon 'angle-down', id: 'espera-icon' %>
-</h2>
-<div id="empresas-espera-div" style="display: none">
-  <%= render partial: 'empresas/table_espera',
-             locals: { empresas: @empresas.select { |empresa| empresa.validada == nil } } %>
-</div>
-<hr>
 
-<h2 class="pointer-cursor text-success" id="empresas-aprovadas-title">
-  Aprovadas <%= fa_icon 'angle-down', id: 'aprovadas-icon' %>
-</h2>
-<div id="empresas-aprovadas-div" style="display: none">
-  <%= render partial: 'empresas/table_aprovadas',
-             locals: { empresas: @empresas.select { |empresa| empresa.validada == true } } %>
-</div>
-<hr>
+<% if current_account.is_coordenador? %>
+  <h2 class="pointer-cursor" id="empresas-espera-title">
+    Em Espera <%= fa_icon 'angle-down', id: 'espera-icon' %>
+  </h2>
 
-<h2 class="pointer-cursor text-danger" id="empresas-reprovadas-title">
-  Reprovadas  <%= fa_icon 'angle-down', id: 'reprovadas-icon' %>
-</h2>
-<div id="empresas-reprovadas-div" style="display: none">
-  <%= render partial: 'empresas/table_reprovadas',
-             locals: { empresas: @empresas.select { |empresa| empresa.validada == false } } %>
-</div>
+  <div id="empresas-espera-div" style="display: none">
+    <%= render partial: 'empresas/table_avaliacao',
+               locals: { empresas: @empresas.select { |empresa| empresa.validada.nil? },
+                         estado_empresa: nil } %>
+  </div>
+  <hr>
+
+  <h2 class="pointer-cursor text-success" id="empresas-aprovadas-title">
+    Aprovadas <%= fa_icon 'angle-down', id: 'aprovadas-icon' %>
+  </h2>
+
+  <div id="empresas-aprovadas-div" style="display: none">
+    <%= render partial: 'empresas/table_avaliacao',
+               locals: { empresas: @empresas.select { |empresa| empresa.validada == true },
+                         estado_empresa: :aprovada } %>
+  </div>
+  <hr>
+
+  <h2 class="pointer-cursor text-danger" id="empresas-reprovadas-title">
+    Reprovadas  <%= fa_icon 'angle-down', id: 'reprovadas-icon' %>
+  </h2>
+
+  <div id="empresas-reprovadas-div" style="display: none">
+    <%= render partial: 'empresas/table_avaliacao',
+               locals: { empresas: @empresas.select { |empresa| empresa.validada == false },
+                         estado_empresa: :reprovada } %>
+  </div>
+<% end %>
+
+<% if current_account.is_aluno? %>
+  <div id="empresas-aprovadas-div">
+    <%= render partial: 'empresas/table_avaliacao',
+               locals: { empresas: @empresas.select { |empresa| empresa.validada == true },
+                         estado_empresa: :aprovada } %>
+  </div>
+<% end %>

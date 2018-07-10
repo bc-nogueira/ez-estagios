@@ -1,13 +1,13 @@
 <% if vagas.blank? %>
     <div class="alert alert-info">
-      Não existem vagas <%= estado_vaga.to_s.pluralize %> para sem avaliadas.
+      Não existem vagas <%= estado_vaga.to_s.pluralize %>
     </div>
 <% else %>
     <table class="table">
       <thead>
       <tr class="d-flex">
-        <th scope="col" class="col-2">Nome</th>
-        <th scope="col" class="col-4">Descricao</th>
+        <th scope="col" class="col-2">Empresa</th>
+        <th scope="col" class="col-4">Título</th>
         <th scope="col" class="col-2">Data Fim</th>
         <th scope="col" class="col-2">Data Resposta</th>
         <th scope="col" class="col-2">Ações</th>
@@ -17,11 +17,15 @@
       <% vagas.each do |vaga| %>
           <tr class="d-flex">
             <td class="col-2">
-              <%= link_to vaga_path(vaga.id) do %>
+              <%= link_to empresa_path(vaga.empresa.id) do %>
                   <%= vaga.empresa.nome %>
               <% end %>
             </td>
-            <td class="col-4"><%= vaga.descricao %></td>
+            <td class="col-4">
+              <%= link_to vaga_path(vaga.id) do %>
+                <%= vaga.titulo %>
+            <% end %>
+            </td>
             <td class="col-2"><%= vaga.data_fim.strftime("%d/%m/%Y") %></td>
             <td class="col-2"><%= vaga.data_resposta.strftime("%d/%m/%Y") %></td>
             <td class="col-2">

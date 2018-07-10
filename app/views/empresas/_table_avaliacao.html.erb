@@ -1,0 +1,61 @@
+<% if empresas.blank? %>
+    <div class="alert alert-info">
+      Não existem empresas <%= estado_empresa.to_s.pluralize %>
+    </div>
+<% else %>
+    <table class="table">
+      <thead>
+      <tr class="d-flex">
+        <th scope="col" class="col-3">Nome</th>
+        <th scope="col" class="col-1">CNPJ</th>
+        <th scope="col" class="col-3">Endereço</th>
+
+        <% if current_account.is_coordenador? %>
+          <th scope="col" class="col-3">E-mail</th>
+          <th scope="col" class="col-2">Ações</th>
+        <% else %>
+          <th scope="col" class="col-5">E-mail</th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+      <% empresas.each do |empresa| %>
+          <tr class="d-flex">
+            <td class="col-3">
+              <%= link_to empresa_path(empresa.id) do %>
+                  <%= empresa.nome %>
+              <% end %>
+            </td>
+            <td class="col-1"><%= empresa.cnpj %></td>
+            <td class="col-3"><%= empresa.endereco %></td>
+            <% if current_account.is_coordenador? %>
+              <td class="col-3"><%= empresa.account.email %></td>
+              <td class="col-2">
+                <div class="row">
+                  <% if estado_empresa == :reprovada || estado_empresa.nil? %>
+                      <%= form_for empresa, url: update_validacao_empresa_path(empresa.id) do |f| %>
+                          <%= f.hidden_field :status, value: true %>
+                          <%= f.button :submit, class: 'btn btn-success rounded-0' do %>
+                              <%= fa_icon 'check' %>
+                          <% end %>
+                      <% end %>
+                  <% end %>
+
+                  <% if estado_empresa == :aprovada || estado_empresa.nil? %>
+                      <%= form_for empresa, url: update_validacao_empresa_path(empresa.id) do |f| %>
+                          <%= f.hidden_field :status, value: false %>
+                          <%= f.button :submit, class: 'btn btn-danger rounded-0' do %>
+                              <%= fa_icon 'times' %>
+                          <% end %>
+                          </div>
+                      <% end %>
+                  <% end %>
+                </td>
+            <% else %>
+              <td class="col-5"><%= empresa.account.email %></td>
+            <% end %>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
