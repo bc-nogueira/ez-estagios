@@ -1,14 +1,15 @@
-<p id="notice"><%= notice %></p>
-
 <h1 class="text-center" id="vagasIndex">Vagas</h1>
-<hr/>
 <% if !current_account.is_coordenador? %>
     <% @vagas.each do |vaga| %>
         <hr>
         <div class="row">
           <div class="col-md-6">
             <div class="media align-items-center text-muted py-3 px-3">
-              <%= image_tag 'sti.svg', class: 'px-3 mr-4 rounded border border-gray imagem-lista-vagas' %>
+              <% if vaga.empresa_avatar.present? %>
+                <%= image_tag vaga.empresa_avatar.medium.url, class: 'mr-4 rounded border border-gray imagem-lista-vagas'  %>
+              <% else %>
+              <%= image_tag "default_company.png", class: 'mr-4 rounded border border-gray imagem-lista-vagas' %>
+              <% end %>
               <p class="media-body pb-3 mb-0 lh-125 pr-5">
                 <strong class="d-block text-gray-dark"><%= vaga.titulo %></strong>
                 <span class="d-block pb-2 small"><%= vaga.empresa_nome %></span>
