@@ -1,18 +1,18 @@
 $(document).on("turbolinks:load", function() {
-    if($("#espera-div").length > 0) {
-        $("#espera-title").on("click", function () {
-            $("#espera-div").slideToggle("fast");
-            $("#espera-icon").toggleClass('flip');
+    if($("#empresas-espera-div").length > 0) {
+        $("#empresas-espera-title").on("click", function () {
+            $("#empresas-espera-div").slideToggle("fast");
+            $("#empresas-espera-icon").toggleClass('flip');
         });
 
-        $("#aprovadas-title").on("click", function () {
-            $("#aprovadas-div").slideToggle("fast");
-            $("#aprovadas-icon").toggleClass('flip');
+        $("#empresas-aprovadas-title").on("click", function () {
+            $("#empresas-aprovadas-div").slideToggle("fast");
+            $("#empresas-aprovadas-icon").toggleClass('flip');
         });
 
-        $("#reprovadas-title").on("click", function () {
-            $("#reprovadas-div").slideToggle("fast");
-            $("#reprovadas-icon").toggleClass('flip');
+        $("#empresas-reprovadas-title").on("click", function () {
+            $("#empresas-reprovadas-div").slideToggle("fast");
+            $("#empresas-reprovadas-icon").toggleClass('flip');
         });
     }
 });

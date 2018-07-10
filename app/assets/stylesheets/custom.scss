@@ -11,7 +11,7 @@ body {
   @extend .alert-danger;
 }
 
-#espera-title, #aprovadas-title, #reprovadas-title {
+.pointer-cursor {
   cursor: pointer;
 }
 

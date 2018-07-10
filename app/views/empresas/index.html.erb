@@ -1,25 +1,25 @@
-<h2 id="espera-title">
+<h2 class="pointer-cursor" id="empresas-espera-title">
   Em Espera <%= fa_icon 'angle-down', id: 'espera-icon' %>
 </h2>
-<div id="espera-div" style="display: none">
+<div id="empresas-espera-div" style="display: none">
   <%= render partial: 'empresas/table_espera',
              locals: { empresas: @empresas.select { |empresa| empresa.validada == nil } } %>
 </div>
 <hr>
 
-<h2 id="aprovadas-title" class="text-success">
+<h2 class="pointer-cursor text-success" id="empresas-aprovadas-title">
   Aprovadas <%= fa_icon 'angle-down', id: 'aprovadas-icon' %>
 </h2>
-<div id="aprovadas-div" style="display: none">
+<div id="empresas-aprovadas-div" style="display: none">
   <%= render partial: 'empresas/table_aprovadas',
              locals: { empresas: @empresas.select { |empresa| empresa.validada == true } } %>
 </div>
 <hr>
 
-<h2 id="reprovadas-title" class="text-danger">
+<h2 class="pointer-cursor text-danger" id="empresas-reprovadas-title">
   Reprovadas  <%= fa_icon 'angle-down', id: 'reprovadas-icon' %>
 </h2>
-<div id="reprovadas-div" style="display: none">
+<div id="empresas-reprovadas-div" style="display: none">
   <%= render partial: 'empresas/table_reprovadas',
              locals: { empresas: @empresas.select { |empresa| empresa.validada == false } } %>
 </div>
