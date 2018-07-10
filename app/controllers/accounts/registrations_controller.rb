@@ -14,11 +14,8 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
     super
     if params[:account][:empresa]
       empresa = Empresa.new(empresa_params)
-      if empresa.valid?
-        @account.update_attributes(perfil: empresa)
-      else
-        @account.destroy
-      end
+      return @account.update_attributes(perfil: empresa) if empresa.valid?
+      @account.destroy
     end
     if params[:account][:pessoa]
       aluno = AlunoService.new(params[:account]).create_aluno
