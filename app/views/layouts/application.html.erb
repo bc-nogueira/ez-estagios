@@ -16,7 +16,7 @@
 
       <% if account_signed_in? && current_account.is_empresa? &&
             !current_account.perfil.validada %>
-        <div class="alert alert-danger">
+        <div class="alert alert-warning">
           <span>
             Empresa não validada!</br>
             Por isso não é possível gerenciar vagas.
