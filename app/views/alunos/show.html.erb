@@ -1,6 +1,7 @@
 <div class="card p-3 mb-3">
   <div class="row">
     <div class="col-2">
+      <%= image_tag "default-user.jpg", class: 'mr-4 rounded border border-gray imagem-lista-vagas'  %>
     </div>
 
     <div class="col-10">
@@ -19,11 +20,27 @@
         <strong class="col-2">Matrícula:</strong>
         <%= @aluno.matricula %>
       </div>
+
     </div>
+
+  </div>
+  <hr>
+  <div class="row">
+    <strong class="col-4">Habilidades:</strong>
+    <% @aluno.aluno_habilidades.each do |habilidade| %>
+      <span class="badge badge-primary d-block ml-2"><%= habilidade.nome %></span>
+    <% end %>
   </div>
 </div>
 
-<%= link_to 'Voltar', alunos_path, class: 'btn btn-secondary' %>
-<% if current_account.is_aluno? && current_account.perfil.papel.id == @aluno.id %>
-  <%= link_to 'Editar', edit_aluno_path, class: 'btn btn-outline-info' %>
-<% end %>
+  <%= render "alunos/habilidades" %>
+
+  <div class="card p-3 mb-3">
+    <div class="row">
+      <%= link_to 'Voltar', alunos_path, class: 'btn btn-secondary col-1 ml-3' %>
+      <% if current_account.is_aluno? && current_account.perfil.papel.id == @aluno.id %>
+        <%= link_to 'Editar', edit_aluno_path, class: 'btn btn-outline-info col-1 ml-3' %>
+      <% end %>
+    </div>
+</div>
+
