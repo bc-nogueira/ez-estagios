@@ -32,6 +32,9 @@
     <% if current_account.is_aluno? %>
         <%= form_for AlunoVaga.new do |f| %>
             <%= f.hidden_field :vaga_id, value: @vaga.id %>
+            <% if current_account.is_aluno? %>
+              <%= f.hidden_field :aluno_id, value: current_account.perfil.papel.id %>
+            <% end %>
           <%= f.submit 'Inscrever-se', class: 'btn btn-primary' %>
         <% end %>
     <% end %>
