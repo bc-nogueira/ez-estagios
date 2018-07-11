@@ -5,15 +5,13 @@ class AlunoHabilidadesController < ApplicationController
     @aluno_habilidades = AlunoHabilidade.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @aluno_habilidade = AlunoHabilidade.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @aluno_habilidade = AlunoHabilidade.new(aluno_habilidade_params)
@@ -21,10 +19,8 @@ class AlunoHabilidadesController < ApplicationController
     respond_to do |format|
       if @aluno_habilidade.save
         format.html { redirect_to aluno_path(id: @aluno_habilidade[:aluno_id]), notice: 'Nova Habilidade adicionada!'  }
-        format.json { render :show, status: :created, location: @aluno_habilidade }
       else
         format.html { render :new }
-        format.json { render json: @aluno_habilidade.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -33,21 +29,17 @@ class AlunoHabilidadesController < ApplicationController
     respond_to do |format|
       if @aluno_habilidade.update(aluno_habilidade_params)
         format.html { redirect_to @aluno_habilidade, notice: 'Aluno habilidade was successfully updated.' }
-        format.json { render :show, status: :ok, location: @aluno_habilidade }
       else
         format.html { render :edit }
-        format.json { render json: @aluno_habilidade.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /aluno_habilidades/1
-  # DELETE /aluno_habilidades/1.json
+
   def destroy
     @aluno_habilidade.destroy
     respond_to do |format|
-      format.html { redirect_to aluno_habilidades_url, notice: 'Aluno habilidade was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to aluno_path(id: @aluno_habilidade[:aluno_id]), notice: 'Habilidade removida!' }
     end
   end
 
