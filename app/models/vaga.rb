@@ -10,6 +10,7 @@ class Vaga < ApplicationRecord
   scope :match_habilidades, ->(aluno) {
     joins(habilidades: :aluno_habilidades)
     .where(aluno_habilidades: { aluno_id: aluno })
+    .distinct
   }
 
   scope :validadas, -> do
