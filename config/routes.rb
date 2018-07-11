@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   # Páginas que precisam de login para serem acessadas
   authenticate :account do
-    # root 'home#index'
-
     get 'index', to: 'home#index'
 
     resources :aluno_horarios
