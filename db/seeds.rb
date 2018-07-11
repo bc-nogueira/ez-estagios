@@ -75,6 +75,6 @@ Habilidade.create(nome: 'CSS', descricao: 'Mecanismo de estilos para web')
 # Cria Habilidade para um vaga
 # niveis: 0 - basico, 1 - intermediario, 2 - avancado
 
-VagaHabilidade.create(vaga_id: vaga1.id, habilidade_id: habilidade1, nivel: 0)
-VagaHabilidade.create(vaga_id: vaga2.id, habilidade_id: habilidade2, nivel: 1)
-VagaHabilidade.create(vaga_id: vaga3.id, habilidade_id: habilidade3, nivel: 2)
+VagaHabilidade.create(vaga_id: vaga1.id, habilidade_id: habilidade1.id, nivel: 0)
+VagaHabilidade.create(vaga_id: vaga2.id, habilidade_id: habilidade2.id, nivel: 1)
+VagaHabilidade.create(vaga_id: vaga3.id, habilidade_id: habilidade3.id, nivel: 2)
