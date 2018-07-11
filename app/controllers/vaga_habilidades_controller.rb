@@ -40,7 +40,7 @@ class VagaHabilidadesController < ApplicationController
   def destroy
     @vaga_habilidade.destroy
     respond_to do |format|
-      format.html { redirect_to vaga_habilidades_url, notice: 'Vaga habilidade deletada.' }
+      format.html { redirect_to vaga_path(id: @vaga_habilidade[:vaga_id]), notice: 'Habilidade deletada!' }
     end
   end
 

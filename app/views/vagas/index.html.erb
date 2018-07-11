@@ -17,7 +17,9 @@
               <p class="media-body pb-3 mb-0 lh-125 pr-5">
                 <strong class="d-block text-gray-dark"><%= vaga.titulo %></strong>
                 <span class="d-block pb-2 small"><%= vaga.empresa_nome %></span>
-                <%= simple_format(vaga.descricao, {}, wrapper_tag: "span") %>
+                <% vaga.vaga_habilidades.each do |habilidade| %>
+                  <span class="badge badge-primary mr-1"><%= habilidade.nome %></span>
+                <% end %>
               </p>
             </div>
           </div>
