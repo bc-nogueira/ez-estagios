@@ -11,30 +11,30 @@
     <div class="col-10">
       <h1><%= @vaga.titulo %></h1>
       <div class="row">
-        <strong class="col-2">Empresa:</strong>
+        <strong class="col-3">Empresa:</strong>
         <%= link_to empresa_path(@vaga.empresa.id) do %>
           <%= @vaga.empresa.nome %>
         <% end %>
       </div>
 
       <div class="row">
-        <strong class="col-2">Descricao:</strong>
+        <strong class="col-3">Descricao:</strong>
         <%= simple_format(@vaga.descricao, {}, wrapper_tag: "span") %>
       </div>
 
       <div class="row mt-3">
-        <strong class="col-2">Data fim:</strong>
+        <strong class="col-3">Prazo Candidatura:</strong>
         <%= @vaga.data_fim.strftime("%d/%m/%Y") %>
       </div>
 
       <div class="row">
-        <strong class="col-2">Data resposta:</strong>
+        <strong class="col-3">Data resposta:</strong>
         <%= @vaga.data_resposta.strftime("%d/%m/%Y") %>
       </div>
 
       <% if current_account.is_empresa? && current_account.perfil.id == @vaga.empresa.id %>
         <div class="row">
-          <strong class="col-2">Situação:</strong>
+          <strong class="col-3">Situação:</strong>
           <%= texto_situacao_vaga @vaga %>
         </div>
       <% end %>
@@ -49,17 +49,15 @@
 <%= render 'vagas/habilidades' %>
 
 <div class="card p-3 mb-3">
-  <% if current_account.is_empresa? %>
     <div class="row">
-      <%= link_to 'Editar', edit_vaga_path(@vaga), class: 'btn btn-primary col-1 ml-3' %>
-      <%= link_to 'Voltar', vagas_path, class: 'btn btn-secondary col-1 ml-3' %>
+      <div class="col-12">
+      <%= link_to 'Voltar', vagas_path, class: 'btn btn-secondary col-1 pull-left' %>
+
+  <% if current_account.is_empresa? %>
+      <%= link_to 'Editar', edit_vaga_path(@vaga), class: 'btn btn-primary col-1 ml-3 pull-right' %>
+  <% end %>
+
+      <%= render partial: 'vagas/btn_inscrever_cancelar', locals: { vaga: @vaga } %>
+      </div>
     </div>
-  <% end %>
-  <% if current_account.is_aluno? %>
-    <%= form_for AlunoVaga.new do |f| %>
-      <%= f.hidden_field :aluno_id, value: current_account.perfil.papel.id %>
-      <%= f.hidden_field :vaga_id, value: @vaga.id %>
-      <%= f.submit 'Inscrever-se', class: 'btn btn-primary' %>
-    <% end %>
-  <% end %>
 </div>

@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  helper_method :current_aluno, :current_empresa
+
   protected
   def after_sign_in_path_for(resource)
     instrucao_index_path

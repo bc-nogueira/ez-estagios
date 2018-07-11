@@ -1,42 +1,34 @@
 <h1 class="text-center" id="vagasIndex">Vagas</h1>
 <% if current_account.is_aluno? %>
-  <%= render "vagas/filtros" %>
+    <%= render "vagas/filtros" %>
 <% end %>
 <% if !current_account.is_coordenador? %>
     <% @vagas.each do |vaga| %>
-       
         <div class="card p-3 mb-3">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="media align-items-center text-muted py-3 px-3">
-              <% if vaga.empresa_avatar.present? %>
-                <%= image_tag vaga.empresa_avatar.medium.url, class: 'mr-4 rounded border border-gray imagem-lista-vagas'  %>
-              <% else %>
-              <%= image_tag "default_company.png", class: 'mr-4 rounded border border-gray imagem-lista-vagas' %>
-              <% end %>
-              <p class="media-body pb-3 mb-0 lh-125 pr-5">
-                <strong class="d-block text-gray-dark"><%= vaga.titulo %></strong>
-                <span class="d-block pb-2 small"><%= vaga.empresa_nome %></span>
-                <% vaga.vaga_habilidades.each do |habilidade| %>
-                  <span class="badge badge-primary mr-1"><%= habilidade.nome %></span>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="media align-items-center text-muted py-3 px-3">
+                <% if vaga.empresa_avatar.present? %>
+                    <%= image_tag vaga.empresa_avatar.medium.url, class: 'mr-4 rounded border border-gray imagem-lista-vagas'  %>
+                <% else %>
+                    <%= image_tag "default_company.png", class: 'mr-4 rounded border border-gray imagem-lista-vagas' %>
                 <% end %>
-              </p>
+                <p class="media-body pb-3 mb-0 lh-125 pr-5">
+                  <strong class="d-block text-gray-dark"><%= vaga.titulo %></strong>
+                  <span class="d-block pb-2 small"><%= vaga.empresa_nome %></span>
+                  <% vaga.vaga_habilidades.each do |habilidade| %>
+                      <span class="badge badge-primary mr-1"><%= habilidade.nome %></span>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex align-self-center align-items-end">
+              <%= link_to 'Ver mais detalhes', vaga, class: 'btn btn-outline-primary mx-2 ml-auto' %>
+
+              <%= render partial: 'vagas/btn_inscrever_cancelar', locals: { vaga: vaga } %>
             </div>
           </div>
-          <div class="col-md-6 d-flex align-self-center align-items-end">
-            <%= link_to 'Ver mais detalhes', vaga, class: 'btn btn-outline-primary m-2 ml-auto' %>
-
-            <% if current_account.is_aluno? %>
-              <%= form_for AlunoVaga.new do |f| %>
-                <%= f.hidden_field :aluno_id, value: current_account.perfil.papel.id %>
-                <%= f.hidden_field :vaga_id, value: vaga.id %>
-                <%= f.submit 'Inscrever-se', class: 'btn btn-primary m-2 ml-auto' %>
-              <% end %>
-           <% end %>
-
-          </div>
         </div>
-      </div>
     <% end %>
     <br>
     <% if current_account.is_empresa? %>
@@ -47,5 +39,5 @@
 <% end %>
 
 <div class="digg_pagination d-flex justify-content-end">
-    <%= will_paginate @vagas, :previous_label => '<', :next_label => '>' %>
-  </div>
+  <%= will_paginate @vagas, :previous_label => '<', :next_label => '>' %>
+</div>
