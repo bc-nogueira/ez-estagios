@@ -1,5 +1,8 @@
 class AlunosController < ApplicationController
   before_action :set_aluno, only: [:show, :edit, :update, :update_validacao]
+  before_action :proibe_aluno, only: [:index]
+  before_action :proibe_empresa, only: [:index, :edit, :update]
+  before_action :proibe_coordenador, only: [:edit]
 
   def index
     @alunos = Aluno.all

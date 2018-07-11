@@ -32,6 +32,14 @@
       <%= f.text_field :data_resposta, class: 'form-control datepicker' %>
     </div>
   </div>
-
-  <%= f.submit 'Cadastrar', class: 'btn btn-success' %>
+<div class="row">
+  <div class="col-12">
+    <%= f.submit 'Salvar', class: 'btn btn-success pull-right' %>
+      <% if vaga.persisted? %>
+          <%= active_link_to 'Voltar', vaga, class: 'btn btn-primary' %>
+      <% else %>
+        <%= active_link_to 'Voltar', vagas_path, class: 'btn btn-primary' %>
+      <% end %>
+  </div>
+</div>
 <% end %>

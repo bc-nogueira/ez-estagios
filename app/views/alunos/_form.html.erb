@@ -1,10 +1,10 @@
-<%= form_with(model: empresa, local: true) do |f| %>
-  <% if empresa.errors.any? %>
+<%= form_with(model: aluno, local: true) do |f| %>
+  <% if aluno.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(empresa.errors.count, "error") %> prohibited this empresa from being saved:</h2>
+      <h2><%= pluralize(aluno.errors.count, "error") %> prohibited this empresa from being saved:</h2>
 
       <ul>
-      <% empresa.errors.full_messages.each do |message| %>
+      <% aluno.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,20 +12,13 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :nome %>
-    <%= f.text_field :nome, class: 'form-control' %>
+    <%= f.label :matricula %>
+    <%= f.text_field :matricula, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :endereco %>
-    <%= f.text_field :endereco, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">   
-    <div class="field">
-      <%= f.label :avatar %> <br/>
-      <%= f.file_field :avatar %>
-    </div>
+    <%= f.label :periodo %>
+    <%= f.text_field :periodo, class: 'form-control' %>
   </div>
 
   <%= f.submit 'Salvar', class: 'btn btn-success' %>

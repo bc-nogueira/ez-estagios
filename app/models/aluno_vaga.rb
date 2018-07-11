@@ -2,6 +2,8 @@ class AlunoVaga < ApplicationRecord
   belongs_to :vaga
   belongs_to :aluno
 
+  validates :aluno, uniqueness: { scope: :vaga }
+
   scope :por_aluno, ->(aluno)  { where aluno: aluno }
   scope :por_vaga, ->(vaga)  { where vaga: vaga }
   scope :pendentes_coordenador, -> { where validado_coordenador: nil }

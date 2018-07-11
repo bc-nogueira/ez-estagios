@@ -1,14 +1,84 @@
 <h1>Bem-vindo!</h1>
+<div class="row">
+  <div class="col-4">
+    <div class="card-icons">
+      <%= active_link_to vagas_path do %>
+          <div class="card">
+            <div class="card-body text-center">
+              <h1>
+                <%= fa_icon('suitcase', style: 'font-size: 5em;') %>
+                <br/>
+                Vagas
+              </h1>
+            </div>
+          </div>
+      <% end %>
+    </div>
 
-<p class="text-justify">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tempor egestas erat, sed efficitur neque pharetra et.
-  Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin nec orci mauris. Curabitur a suscipit lorem, at
-  maximus turpis. Suspendisse nec mauris ac ipsum faucibus elementum laoreet vitae risus. Nam scelerisque, est a dictum
-  blandit, sem ipsum pretium metus, sed fringilla elit orci sit amet neque. Sed purus diam, pulvinar in maximus eu,
-  scelerisque vitae velit. Ut ultricies, lorem non efficitur lacinia, urna neque molestie arcu, a lobortis ante augue
-  sed elit. Sed magna nisi, blandit id elit non, feugiat tempus ex.
-</p>
+  </div>
+  <div class="col-4">
+    <div class="card-icons">
+      <%= active_link_to aluno_vagas_path do %>
+          <div class="card">
+            <div class="card-body text-center">
+              <h1>
+                <%= fa_icon('list', style: 'font-size: 5em;') %>
+                <br/>
+                Candidaturas
+              </h1>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card-icons">
+      <%= active_link_to instrucao_index_path do %>
+          <div class="card">
+            <div class="card-body text-center">
+              <h1>
+                <%= fa_icon('info', style: 'font-size: 5em;') %>
+                <br/>
+                Instruções
+              </h1>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<hr>
-
-<h3>Empresas Parceiras</h3>
+<% if current_account.is_coordenador? %>
+    <div class="row mt-4">
+      <div class="col-4 offset-2">
+        <div class="card-icons">
+          <%= active_link_to alunos_path do %>
+              <div class="card">
+                <div class="card-body text-center">
+                  <h1>
+                    <%= fa_icon('users', style: 'font-size: 5em;') %>
+                    <br/>
+                    Alunos
+                  </h1>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card-icons">
+          <%= active_link_to empresas_path do %>
+              <div class="card">
+                <div class="card-body text-center">
+                  <h1>
+                    <%= fa_icon('building', style: 'font-size: 5em;') %>
+                    <br/>
+                    Empresas
+                  </h1>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+<% end %>

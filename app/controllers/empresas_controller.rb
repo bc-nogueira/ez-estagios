@@ -1,5 +1,8 @@
 class EmpresasController < ApplicationController
   before_action :set_empresa, only: [:show, :edit, :update, :update_validacao]
+  before_action :proibe_aluno, only: [:index, :edit, :update, :update_validacao]
+  before_action :proibe_empresa, only: [:index, :update_validacao]
+  before_action :proibe_coordenador, only: [:edit, :update]
 
   def index
     @empresas = Empresa.all

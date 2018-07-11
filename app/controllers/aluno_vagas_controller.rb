@@ -1,6 +1,10 @@
 class AlunoVagasController < ApplicationController
   before_action :set_aluno_vaga, only: [:show, :edit, :update, :destroy]
 
+  before_action :proibe_aluno, only: [:new, :show, :edit]
+  before_action :proibe_empresa, only: [:new, :show, :edit, :destroy]
+  before_action :proibe_coordenador, only: [:new, :show, :edit, :destroy]
+  
   def index
     if current_aluno
       return @aluno_vagas = AlunoVaga.por_aluno(current_aluno)
@@ -10,14 +14,6 @@ class AlunoVagasController < ApplicationController
     end
     @aluno_vagas = AlunoVaga.all
   end
-
-  def show; end
-
-  def new
-    @aluno_vaga = AlunoVaga.new
-  end
-
-  def edit; end
 
   def create
     @aluno_vaga = AlunoVaga.new(aluno_vaga_params)

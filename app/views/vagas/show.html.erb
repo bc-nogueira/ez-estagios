@@ -9,7 +9,13 @@
     </div>
 
     <div class="col-10">
-      <h1><%= @vaga.titulo %></h1>
+      <h1>
+        <%= @vaga.titulo %>
+        <% if current_account.is_empresa? && @vaga.empresa == current_account.perfil %>
+            <%= link_to '✖', @vaga, method: :delete, class: 'btn btn-danger pull-right',
+                        data: { confirm: 'Você tem certeza que deseja remover esta vaga?' } %>
+        <% end %>
+      </h1>
       <div class="row">
         <strong class="col-3">Empresa:</strong>
         <%= link_to empresa_path(@vaga.empresa.id) do %>
