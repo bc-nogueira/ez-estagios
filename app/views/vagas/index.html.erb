@@ -38,6 +38,8 @@
     <%= render partial: 'index_as_coordenador', locals: { vagas: @vagas } %>
 <% end %>
 
-<div class="digg_pagination d-flex justify-content-end">
-  <%= will_paginate @vagas, :previous_label => '<', :next_label => '>' %>
-</div>
+<% unless current_account.is_coordenador? %>
+  <div class="digg_pagination d-flex justify-content-end">
+    <%= will_paginate @vagas, :previous_label => '<', :next_label => '>' %>
+  </div>
+<% end %>

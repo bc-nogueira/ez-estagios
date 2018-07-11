@@ -1,0 +1,7 @@
+<% if current_account.is_empresa? %>
+  <%= render 'sobre/empresa' %>
+<% elsif current_account.is_coordenador? %>
+  <%= render 'sobre/coordenador' %>
+<% else %>
+  <%= render 'sobre/aluno' %>
+<% end %>

@@ -68,7 +68,7 @@ class VagasController < ApplicationController
 
   def index_as_coordenador
     return unless current_account.is_coordenador?
-    @vagas = Vaga.all.paginate(:page => params[:page], :per_page => 3)
+    @vagas = Vaga.all
   end
 
   def set_vaga

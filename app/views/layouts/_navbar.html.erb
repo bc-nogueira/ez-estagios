@@ -14,10 +14,14 @@
             <%= fa_icon('home') %> Home
           <% end %>
         </li>
-        <li class="nav-item">
-          <%= active_link_to instrucao_index_path, class: 'nav-link' do %>
-            <%= fa_icon('info') %> Instruções
-          <% end %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= fa_icon('info') %> Sobre
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= active_link_to 'Instruções', instrucao_path, class: 'dropdown-item' %>
+            <%= active_link_to 'Sistema', sistema_path, class: 'dropdown-item' %>
+          </div>
         </li>
         <% if current_account.is_empresa? %>
           <%= render 'layouts/links_empresa' %>
