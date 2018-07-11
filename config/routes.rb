@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :accounts, controllers: { registrations: 'accounts/registrations' }
-
-  authenticated :account do
-    root to: 'home#index', as: :authenticated_root
-  end
+  devise_for :accounts,
+             controllers: { registrations: 'accounts/registrations' }
 
   root to: redirect('/accounts/sign_in')
+
+  authenticated :account do
+    root to: redirect('/index'), as: :authenticated_root
+  end
 
   # Páginas que precisam de login para serem acessadas
   authenticate :account do
