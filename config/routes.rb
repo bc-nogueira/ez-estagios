@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   authenticate :account do
     get 'index', to: 'home#index'
 
-    # TODO: Implementar aluno horários
-    # resources :aluno_horarios
-    resources :aluno_habilidades, only: [:create, :destroy]
+      resources :aluno_habilidades, only: [:create, :destroy]
     resources :vaga_habilidades, only: [:create, :destroy]
     resources :aluno_vagas, only: [:index, :create, :update, :destroy]
     resources :habilidades
