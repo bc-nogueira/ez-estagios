@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  devise_scope :account do
+    root to: 'devise/sessions#new'
+  end
 
   # Páginas que precisam de login para serem acessadas
   authenticate :account do
-    root 'home#index'
+    # root 'home#index'
+
+    get 'index', to: 'home#index'
+
     resources :aluno_horarios
     resources :aluno_habilidades, only: [:create, :destroy]
     resources :vaga_habilidades, only: [:create, :destroy]

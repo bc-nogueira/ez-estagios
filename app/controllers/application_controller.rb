@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def after_sign_in_path_for(resource)
-    instrucao_index_path
+    index_path
   end
 
   def current_aluno
