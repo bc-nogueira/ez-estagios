@@ -1,22 +1,22 @@
 # Cria empresas novas em diferentes estados de validações, com suas contas
-sti = Empresa.new({ nome: 'STI', cnpj: '87.854.813/0001-27', endereco: 'Valonguinho' })
+sti = Empresa.new({ nome: 'STI', cnpj: '87.854.813', endereco: 'Valonguinho' })
 Account.create({ email: 'sti@gmail.com', password: '123456', perfil: sti })
 
-uff = Empresa.new({ nome: 'UFF', cnpj: '12.442.268/0001-62', endereco: 'Reitoria',
+uff = Empresa.new({ nome: 'UFF', cnpj: '12.442.268', endereco: 'Reitoria',
                     validada: true })
 Account.create({ email: 'uff@gmail.com', password: '123456', perfil: uff })
 
-guanabara = Empresa.new({ nome: 'Guanabara', cnpj: '23.162.308/0001-39',
+guanabara = Empresa.new({ nome: 'Guanabara', cnpj: '23.162.308',
                           endereco: 'Niteroi', validada: false })
 Account.create({ email: 'guanabara@gmail.com', password: '123456',
                  perfil: guanabara })
 
-visagio = Empresa.new({ nome: 'Visagio', cnpj: '20.970.364/0001-01',
+visagio = Empresa.new({ nome: 'Visagio', cnpj: '20.970.364',
                         endereco: 'Rio de Janeiro', validada: true })
 Account.create({ email: 'visagio@gmail.com', password: '123456',
                  perfil: visagio })
 
-stone = Empresa.new({ nome: 'Stone', cnpj: '26.388.730/0001-03',
+stone = Empresa.new({ nome: 'Stone', cnpj: '26.388.730',
                         endereco: 'Rio de Janeiro', validada: true })
 Account.create({ email: 'stone@gmail.com', password: '123456',
                  perfil: stone })
