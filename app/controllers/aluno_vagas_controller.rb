@@ -38,7 +38,7 @@ class AlunoVagasController < ApplicationController
 
   def destroy
     @aluno_vaga.destroy
-    if @aluno_vaga.persisted
+    if @aluno_vaga.persisted?
       flash[:success] = 'Candidatura cancelada com sucesso'
     end
     redirect_to aluno_vagas_path

@@ -1,0 +1,26 @@
+
+<table class="table">
+    <thead>
+    <tr class="d-flex">
+      <th scope="col" class="col-2">Habilidade</th>
+      <th scope="col" class="col-4">Descrição</th>
+      <th scope="col" class="col-3">Nível</th>
+      <th scope="col" class="col-3">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% @aluno.aluno_habilidades.each do |habilidade| %>
+      <tr class="d-flex">
+        <td class="col-2"><%= habilidade.nome %></td>
+        <td class="col-4"><%= habilidade.descricao %></td>
+        <td class="col-3"><%= habilidade.nivel %></td>
+        <td class="col-3">
+            <%= link_to habilidade, method: :delete, class: "btn btn-sm btn-outline-danger" do %>
+            <%= fa_icon('times') %> Deletar
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>

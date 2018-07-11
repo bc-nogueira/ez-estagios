@@ -32,7 +32,7 @@
     </ul>
     <% if account_signed_in? %>
       <span class="navbar-text text-white mr-3">
-        Olá
+        Olá,
         <% if current_account.is_empresa? %>
           <%= link_to empresa_path(current_account.perfil.id) do %>
             <b><%= current_account.perfil.nome %></b>!

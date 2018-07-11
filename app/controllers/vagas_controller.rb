@@ -1,12 +1,16 @@
 class VagasController < ApplicationController
+  
   before_action :set_vaga, only: [:show, :edit, :update, :destroy,
-                                  :update_validacao]
+  :update_validacao]
+  
+  has_scope :por_empresa
+
   def index
     if current_account.is_empresa?
-      return @vagas = Vaga.por_empresa(current_account.perfil_id)
+      return @vagas = Vaga.por_empresa(current_account.perfil_id).paginate(:page => params[:page], :per_page => 3)
     end
-    return @vagas = Vaga.validadas if current_account.is_aluno?
-    @vagas = Vaga.all
+    return @vagas = apply_scopes(Vaga).validadas.paginate(:page => params[:page], :per_page => 3) if current_account.is_aluno?
+    @vagas = Vaga.all.paginate(:page => params[:page], :per_page => 3)
   end
 
   def show

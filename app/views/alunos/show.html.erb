@@ -24,13 +24,10 @@
     </div>
 
   </div>
-  <hr>
-  <div class="row">
-    <strong class="col-4">Habilidades:</strong>
-    <% @aluno.aluno_habilidades.each do |habilidade| %>
-      <span class="badge badge-primary d-block ml-2"><%= habilidade.nome %></span>
-    <% end %>
+  <div class="container mt-5">
+    <%= render "tabela_habilidades" %>
   </div>
+
 </div>
 
   <%= render "alunos/habilidades" %>

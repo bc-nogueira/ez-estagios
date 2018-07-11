@@ -19,10 +19,10 @@
 
       <div class="row">
         <strong class="col-2">Descricao:</strong>
-        <%= @vaga.descricao %>
+        <%= simple_format(@vaga.descricao, {}, wrapper_tag: "span") %>
       </div>
 
-      <div class="row">
+      <div class="row mt-3">
         <strong class="col-2">Data fim:</strong>
         <%= @vaga.data_fim.strftime("%d/%m/%Y") %>
       </div>

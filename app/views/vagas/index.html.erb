@@ -1,7 +1,11 @@
 <h1 class="text-center" id="vagasIndex">Vagas</h1>
+<% if current_account.is_aluno? %>
+  <%= render "vagas/filtros" %>
+<% end %>
 <% if !current_account.is_coordenador? %>
     <% @vagas.each do |vaga| %>
-        <hr>
+       
+        <div class="card p-3 mb-3">
         <div class="row">
           <div class="col-md-6">
             <div class="media align-items-center text-muted py-3 px-3">
@@ -20,15 +24,17 @@
           <div class="col-md-6 d-flex align-self-center align-items-end">
             <%= link_to 'Ver mais detalhes', vaga, class: 'btn btn-outline-primary m-2 ml-auto' %>
 
-          <% if current_account.is_aluno? && current_account.perfil.papel.validado %>
-                <%= form_for AlunoVaga.new do |f| %>
-                    <%= f.hidden_field :vaga_id, value: vaga.id %>
-                    <%= f.submit 'Inscrever-se', class: 'btn btn-primary m-2 ml-auto' %>
-                <% end %>
-            <% end %>
+            <% if current_account.is_aluno? %>
+              <%= form_for AlunoVaga.new do |f| %>
+                <%= f.hidden_field :aluno_id, value: current_account.perfil.papel.id %>
+                <%= f.hidden_field :vaga_id, value: vaga.id %>
+                <%= f.submit 'Inscrever-se', class: 'btn btn-primary m-2 ml-auto' %>
+              <% end %>
+           <% end %>
 
           </div>
         </div>
+      </div>
     <% end %>
     <br>
     <% if current_account.is_empresa? %>
@@ -38,3 +44,6 @@
     <%= render partial: 'index_as_coordenador', locals: { vagas: @vagas } %>
 <% end %>
 
+<div class="digg_pagination d-flex justify-content-end">
+    <%= will_paginate @vagas, :previous_label => '<', :next_label => '>' %>
+  </div>
