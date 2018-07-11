@@ -60,12 +60,12 @@ Vaga.create(empresa_id: sti.id, titulo: 'Desenvolvedor Ruby',
 
 # Cria habilidades
 
-habilidade1 = Habilidade.create(nome: 'MySQL',
-                                descricao: 'Banco de Dados Relacional')
-habilidade2 = Habilidade.create(nome: 'Ruby on Rails',
-                                descricao: 'Framework em Ruby')
-habilidade3 = Habilidade.create(nome: 'Design Patterns',
-                  descricao: 'Conhecimento dos Padrões de Projeto')
+hab1 = Habilidade.create(nome: 'MySQL',
+                         descricao: 'Banco de Dados Relacional')
+hab2= Habilidade.create(nome: 'Ruby on Rails',
+                        descricao: 'Framework em Ruby')
+hab3 = Habilidade.create(nome: 'Design Patterns',
+                         descricao: 'Conhecimento dos Padrões de Projeto')
 Habilidade.create(nome: 'HTML', descricao: 'Linguagem de marcação para web')
 Habilidade.create(nome: 'Javascript',
                   descricao: 'Linguagem de scripts para web')
@@ -75,6 +75,6 @@ Habilidade.create(nome: 'CSS', descricao: 'Mecanismo de estilos para web')
 # Cria Habilidade para um vaga
 # niveis: 0 - basico, 1 - intermediario, 2 - avancado
 
-VagaHabilidade.create(vaga_id: vaga1.id, habilidade_id: habilidade1.id, nivel: 0)
-VagaHabilidade.create(vaga_id: vaga2.id, habilidade_id: habilidade2.id, nivel: 1)
-VagaHabilidade.create(vaga_id: vaga3.id, habilidade_id: habilidade3.id, nivel: 2)
+VagaHabilidade.create(vaga_id: vaga1.id, habilidade_id: hab1.id, nivel: 0)
+VagaHabilidade.create(vaga_id: vaga2.id, habilidade_id: hab2.id, nivel: 1)
+VagaHabilidade.create(vaga_id: vaga3.id, habilidade_id: hab3.id, nivel: 2)
