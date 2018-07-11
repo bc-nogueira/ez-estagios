@@ -6,6 +6,11 @@ class Vaga < ApplicationRecord
   delegate :avatar, to: :empresa, prefix: true
 
   scope :por_empresa, ->(id) { where(empresa_id: id) }
+  scope :match_habilidades, ->(aluno) {
+    joins(:vaga_habilidades)
+    .joins("LEFT JOIN aluno_habilidades on vaga_habilidades.habilidade_id = aluno_habilidades.habilidade_id")
+    .where(aluno_habilidades: {aluno_id: aluno})
+  }
   scope :validadas, -> do
     joins(:empresa).where(validada: true, empresas: { validada: true })
   end

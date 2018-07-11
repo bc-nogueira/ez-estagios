@@ -16,6 +16,8 @@ visagio = Empresa.new({ nome: 'Visagio', cnpj: '4444444',
 Account.create({ email: 'visagio@gmail.com', password: '123456',
                  perfil: visagio })
 
+# validadas: visagio e uff
+
 # Cria um coordenador com sua conta
 coord = Coordenador.new(curso: 'Sistemas de Informação')
 viterbo = Pessoa.new({ nome: 'Viterbo', cpf: '11111111111', papel: coord })
@@ -48,33 +50,49 @@ vaga2 = Vaga.create(empresa_id: uff.id, titulo: 'Desenvolvedor Ruby',
             descricao: "- Noções de programação em Ruby \n - Bolsa: R$ 900,00",
             data_fim: Time.now + 2.days, data_resposta: Time.now + 4.days)
 
-vaga3 = Vaga.create(empresa_id: guanabara.id, titulo: 'Desenvolvedor Ruby',
-            descricao: "- Noções de programação em Ruby \n - Bolsa: R$ 1000,00",
+vaga3 = Vaga.create(empresa_id: visagio.id, titulo: 'Desenvolvedor C#',
+            descricao: "- Noções de logica de programação \n - Bolsa: R$ 1000,00",
             validada: false, data_fim: Time.now + 2.days ,
             data_resposta: Time.now + 4.days)
 
-Vaga.create(empresa_id: sti.id, titulo: 'Desenvolvedor Ruby',
-            descricao: "- Noções de programação em Ruby \n - Bolsa: R$ 700,00",
+vaga4 = Vaga.create(empresa_id: visagio.id, titulo: 'Desenvolvedor Web',
+            descricao: "- Noções de desenvolvimento web \n - Bolsa: R$ 700,00",
             validada: true, data_fim: Time.now + 2.days ,
             data_resposta: Time.now + 4.days)
 
 # Cria habilidades
 
-hab1 = Habilidade.create(nome: 'MySQL',
-                         descricao: 'Banco de Dados Relacional')
-hab2= Habilidade.create(nome: 'Ruby on Rails',
-                        descricao: 'Framework em Ruby')
-hab3 = Habilidade.create(nome: 'Design Patterns',
-                         descricao: 'Conhecimento dos Padrões de Projeto')
-Habilidade.create(nome: 'HTML', descricao: 'Linguagem de marcação para web')
-Habilidade.create(nome: 'Javascript',
-                  descricao: 'Linguagem de scripts para web')
-Habilidade.create(nome: 'CSS', descricao: 'Mecanismo de estilos para web')
+habilidade1 = Habilidade.create(nome: 'MySQL',
+                                descricao: 'Banco de Dados Relacional')
+habilidade2 = Habilidade.create(nome: 'Ruby on Rails',
+                                descricao: 'Framework Web em Ruby')
+habilidade3 = Habilidade.create(nome: 'Design Patterns',
+                  descricao: 'Conhecimento dos Padrões de Projeto')
+habilidade4 = Habilidade.create(nome: 'HTML',
+descricao: 'Linguagem de marcação para web')
+habilidade5 = Habilidade.create(nome: 'Javascript',
+descricao: 'Linguagem de scripts para web')
+habilidade6 = Habilidade.create(nome: 'CSS',
+descricao: 'Mecanismo de estilos para web')
 
 
 # Cria Habilidade para um vaga
 # niveis: 0 - basico, 1 - intermediario, 2 - avancado
 
-VagaHabilidade.create(vaga_id: vaga1.id, habilidade_id: hab1.id, nivel: 0)
-VagaHabilidade.create(vaga_id: vaga2.id, habilidade_id: hab2.id, nivel: 1)
-VagaHabilidade.create(vaga_id: vaga3.id, habilidade_id: hab3.id, nivel: 2)
+VagaHabilidade.create(vaga_id: vaga1.id, habilidade_id: habilidade1.id, nivel: 0)
+VagaHabilidade.create(vaga_id: vaga1.id, habilidade_id: habilidade3.id, nivel: 0)
+VagaHabilidade.create(vaga_id: vaga2.id, habilidade_id: habilidade2.id, nivel: 1)
+VagaHabilidade.create(vaga_id: vaga3.id, habilidade_id: habilidade3.id, nivel: 2)
+VagaHabilidade.create(vaga_id: vaga4.id, habilidade_id: habilidade4.id, nivel: 2)
+VagaHabilidade.create(vaga_id: vaga4.id, habilidade_id: habilidade5.id, nivel: 1)
+VagaHabilidade.create(vaga_id: vaga4.id, habilidade_id: habilidade6.id, nivel: 1)
+
+# Adicionar imagem de perfil
+
+visagio.avatar = Rails.root.join("db/seed_images/visagio.png").open
+uff.avatar = Rails.root.join("db/seed_images/uff.png").open
+sti.avatar = Rails.root.join("db/seed_images/sti.png").open
+
+visagio.save!
+uff.save!
+sti.save!

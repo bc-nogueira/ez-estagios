@@ -8,15 +8,15 @@
         </div>
         <div class="col-4">
           <div class="form-group">
-            <%= select_tag :por_empresa, options_from_collection_for_select(Empresa.all, :id, :nome),
+            <%= select_tag :por_empresa, options_from_collection_for_select(Empresa.all, :id, :nome), include_blank: true,
                        class: 'form-control mr-sm-2 select_curso' %>
           </div>
         </div>
       <div class="col-3">
         <div class="form-group form-check form-check-inline">
           <div class="form-control ">
-            <%= check_box_tag :solicitacao, true, false, class: "form-check-input" %>
-            <%= label_tag :solicitacao, "Match Habilidades", class:"form-check-label" %>
+            <%= check_box_tag :match_habilidades, current_account.perfil.papel.id, false, class: "form-check-input" %>
+            <%= label_tag :match_habilidades, "Match Habilidades", class:"form-check-label" %>
           </div>
         </div>
       </div>

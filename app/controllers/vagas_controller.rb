@@ -4,6 +4,7 @@ class VagasController < ApplicationController
   :update_validacao]
   
   has_scope :por_empresa
+  has_scope :match_habilidades
 
   def index
     if current_account.is_empresa?
