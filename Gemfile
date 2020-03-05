@@ -22,7 +22,7 @@ gem 'has_scope'
 
 gem 'active_link_to'
 gem 'carrierwave'
-gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'devise', '~> 4.7'
 gem 'devise-i18n'
 gem 'mini_magick'
 gem 'uglifier', '>= 1.3.0'
